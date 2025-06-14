@@ -1,6 +1,4 @@
-import tensorflow as tf
 import numpy as np
-from PIL import Image
 import cv2
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_array
 def preprocess_image(image):

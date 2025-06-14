@@ -1,12 +1,9 @@
 from flask import Flask, render_template, request
 from tensorflow.keras.models import load_model
-from PIL import Image
 import numpy as np
-import os
 import tensorflow as tf
 import cv2
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
 from image_preprocessing import preprocess_image
 import json
 
