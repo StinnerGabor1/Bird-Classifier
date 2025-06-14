@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bird Classifier - AI-Powered Bird Species Recognition</title>
+    <meta name="description" content="Upload any bird image and discover the species using our advanced AI-powered classification technology. Fast, accurate, and secure.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #2d5016, #3d6b1f, #4a7c23, #5a8f2a);
+        min-height: 100vh;
+        color: #ffffff;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      .nature-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, #2d5016, #3d6b1f, #4a7c23, #5a8f2a);
+      }
+
+      .nature-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(circle at 20% 80%, rgba(139, 195, 74, 0.2) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.2) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(104, 159, 56, 0.15) 0%, transparent 50%);
+        animation: natureFloat 8s ease-in-out infinite;
+      }
+
+      @keyframes natureFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(0.5deg); }
+      }
+
+      .main-container {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 25px;
+        padding: 2.5rem;
+        max-width: 900px;
+        margin: 2rem auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .main-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(139, 195, 74, 0.6), transparent);
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .logo {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        margin-right: 1rem;
+        box-shadow: 0 8px 25px rgba(139, 195, 74, 0.4);
+        animation: gentlePulse 3s infinite;
+      }
+
+      @keyframes gentlePulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+      }
+
+      h1 {
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin: 0;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        font-weight: 400;
+      }
+
+      /* Bird Slideshow */
+      .slideshow-container {
+        position: relative;
+        max-width: 100%;
+        margin: 2rem 0;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .slide {
+        display: none;
+        position: relative;
+      }
+
+      .slide.active {
+        display: block;
+        animation: slideIn 0.8s ease-in-out;
+      }
+
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      .slide img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .slide-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 2rem 1.5rem 1.5rem;
+        text-align: center;
+      }
+
+      .slide-caption h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .slide-caption p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin: 0;
+      }
+
+      /* Slideshow indicators */
+      .slideshow-indicators {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .indicator.active {
+        background: #8bc34a;
+        transform: scale(1.2);
+      }
+
+      .upload-section {
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px dashed rgba(139, 195, 74, 0.4);
+        border-radius: 18px;
+        padding: 2rem;
+        margin: 2rem 0;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .upload-section:hover {
+        border-color: rgba(139, 195, 74, 0.7);
+        background: rgba(139, 195, 74, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .form-control {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(139, 195, 74, 0.3);
+        border-radius: 12px;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #ffffff;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        background: rgba(255, 255, 255, 0.18);
+        border-color: #8bc34a;
+        box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, 0.25);
+        color: #ffffff;
+      }
+
+      .form-control::file-selector-button {
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        color: white;
+        font-weight: 500;
+        margin-right: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .form-control::file-selector-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(139, 195, 74, 0.4);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        border: none;
+        border-radius: 12px;
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 8px 25px rgba(139, 195, 74, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(139, 195, 74, 0.4);
+        background: linear-gradient(135deg, #9ccc65 0%, #7cb342 100%);
+      }
+
+      .result-section {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(139, 195, 74, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+        margin-top: 2rem;
+        backdrop-filter: blur(10px);
+        animation: slideUp 0.6s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .result-header {
+        color: #ffffff;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .prediction-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #8bc34a;
+        text-transform: capitalize;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 8px rgba(139, 195, 74, 0.3);
+      }
+
+      .probability-text {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 1.5rem;
+      }
+
+      .progress {
+        height: 10px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      .progress-bar {
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        border-radius: 8px;
+        transition: width 1s ease-in-out;
+        box-shadow: 0 2px 8px rgba(139, 195, 74, 0.5);
+      }
+
+      .image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(139, 195, 74, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .image:hover {
+        transform: scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      }
+
+      .upload-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        opacity: 0.8;
+      }
+
+      /* Instructions and Privacy Section */
+      .info-section {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(139, 195, 74, 0.2);
+        border-radius: 18px;
+        padding: 2rem;
+        margin: 2rem 0;
+        backdrop-filter: blur(10px);
+      }
+
+      .info-section h3 {
+        color: #8bc34a;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .info-section h3::before {
+        content: '';
+        width: 4px;
+        height: 20px;
+        background: #8bc34a;
+        border-radius: 2px;
+        margin-right: 0.8rem;
+      }
+
+      .info-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .info-section li {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .info-section li::before {
+        content: '🌿';
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .privacy-highlight {
+        background: rgba(139, 195, 74, 0.1);
+        border-left: 4px solid #8bc34a;
+        padding: 1rem;
+        border-radius: 0 8px 8px 0;
+        margin: 1rem 0;
+      }
+
+      .privacy-highlight p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 500;
+      }
+
+      @media (max-width: 768px) {
+        .main-container {
+          margin: 1rem;
+          padding: 1.5rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .logo {
+          width: 55px;
+          height: 55px;
+          font-size: 1.8rem;
+        }
+
+        .slide img {
+          height: 250px;
+        }
+
+        .slide-caption {
+          padding: 1.5rem 1rem 1rem;
+        }
+
+        .slide-caption h3 {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nature-bg"></div>
+
+    <div class="container">
+      <div class="main-container">
+        <!-- Header -->
+        <div class="logo-container">
+          <div class="logo">🦅</div>
+          <div>
+            <h1 class="text-center">Bird Classifier</h1>
+            <p class="subtitle text-center">AI-Powered Bird Species Recognition</p>
+          </div>
+        </div>
+
+        <!-- 1. Bird Slideshow (First) -->
+        <div class="slideshow-container">
+          <div class="slide active">
+            <img src="https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg" alt="Cardinal">
+            <div class="slide-caption">
+              <h3>Northern Cardinal</h3>
+              <p>Recognizable by their bright red plumage and distinctive crest</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg" alt="Blue Jay">
+            <div class="slide-caption">
+              <h3>Blue Jay</h3>
+              <p>Intelligent birds known for their vibrant blue coloring and complex social behavior</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg" alt="Robin">
+            <div class="slide-caption">
+              <h3>American Robin</h3>
+              <p>Often considered a sign of spring with their distinctive orange-red breast</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg" alt="Owl">
+            <div class="slide-caption">
+              <h3>Great Horned Owl</h3>
+              <p>Powerful nocturnal hunters with distinctive ear tufts and piercing eyes</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="https://images.pexels.com/photos/1300355/pexels-photo-1300355.jpeg" alt="Hummingbird">
+            <div class="slide-caption">
+              <h3>Ruby-throated Hummingbird</h3>
+              <p>Tiny birds capable of hovering and flying backwards with incredible speed</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slideshow-indicators">
+          <span class="indicator active" onclick="currentSlide(1)"></span>
+          <span class="indicator" onclick="currentSlide(2)"></span>
+          <span class="indicator" onclick="currentSlide(3)"></span>
+          <span class="indicator" onclick="currentSlide(4)"></span>
+          <span class="indicator" onclick="currentSlide(5)"></span>
+        </div>
+
+        <!-- 2. Image Upload Section (Second) -->
+        <div class="upload-section">
+          <div class="text-center">
+            <div class="upload-icon">🎯</div>
+            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem;">
+              Select a bird image to identify the species with our AI
+            </p>
+          </div>
+
+          <form class="p-3 text-center" action='/' method="post" enctype="multipart/form-data">
+            <input class="form-control" type="file" name="imagefile">
+            <input class="btn btn-primary mt-3" type="submit" value="Predict Bird Species">
+          </form>
+        </div>
+
+        <!-- 3. Prediction Results (Third) -->
+        {% if prediction %}
+        <div class="result-section">
+          <h3 class="result-header">🎉 Species Identified</h3>
+          <div class="text-center">
+            <p class="prediction-text">Bird species: {{ prediction }}</p>
+            <p class="probability-text">Confidence: {{ prob }}%</p>
+
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: {{ prob }}%;" aria-valuenow="{{ prob }}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <img src="{{ url_for('static', filename=file) }}" class="image" alt="Classified bird image">
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- 4. Instructions Section (Fourth) -->
+        <div class="info-section">
+          <h3>How to Use the Bird Classifier</h3>
+          <ul>
+            <li>Click "Choose File" above to select a clear photo of a bird</li>
+            <li>Make sure the bird is the main subject and clearly visible</li>
+            <li>Supported formats: JPEG, PNG, WebP (max 10MB)</li>
+            <li>Click "Predict Bird Species" to analyze your image</li>
+            <li>View the results with confidence percentage and species information</li>
+          </ul>
+        </div>
+
+        <!-- 5. Privacy Section (Fifth) -->
+        <div class="info-section">
+          <h3>Privacy & Security</h3>
+          <div class="privacy-highlight">
+            <p>🔒 Your images are processed securely and are NOT saved or stored on our servers</p>
+          </div>
+          <ul>
+            <li>Images are only used for classification and immediately discarded</li>
+            <li>No personal data is collected or stored</li>
+            <li>All processing happens in real-time without data retention</li>
+            <li>Your privacy and data security are our top priorities</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      let slideIndex = 1;
+      showSlide(slideIndex);
+
+      // Auto-advance slides every 4 seconds
+      setInterval(function() {
+        slideIndex++;
+        if (slideIndex > 5) slideIndex = 1;
+        showSlide(slideIndex);
+      }, 4000);
+
+      function currentSlide(n) {
+        showSlide(slideIndex = n);
+      }
+
+      function showSlide(n) {
+        let slides = document.getElementsByClassName("slide");
+        let indicators = document.getElementsByClassName("indicator");
+
+        if (n > slides.length) { slideIndex = 1; }
+        if (n < 1) { slideIndex = slides.length; }
+
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].classList.remove("active");
+        }
+
+        for (let i = 0; i < indicators.length; i++) {
+          indicators[i].classList.remove("active");
+        }
+
+        slides[slideIndex - 1].classList.add("active");
+        indicators[slideIndex - 1].classList.add("active");
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
