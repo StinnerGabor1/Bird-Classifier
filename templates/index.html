@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,21 +20,22 @@
 
       body {
         font-family: 'Inter', sans-serif;
-        background: linear-gradient(135deg, #2d5016, #3d6b1f, #4a7c23, #5a8f2a);
+        background: linear-gradient(135deg, #1a4d0f, #2d5016, #3d6b1f, #4a7c23, #5a8f2a);
         min-height: 100vh;
         color: #ffffff;
         overflow-x: hidden;
         position: relative;
       }
 
+      /* Enhanced Nature Background with Parallax Effect */
       .nature-bg {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: -1;
-        background: linear-gradient(135deg, #2d5016, #3d6b1f, #4a7c23, #5a8f2a);
+        z-index: -2;
+        background: linear-gradient(135deg, #1a4d0f, #2d5016, #3d6b1f, #4a7c23, #5a8f2a);
       }
 
       .nature-bg::before {
@@ -45,89 +46,282 @@
         width: 100%;
         height: 100%;
         background:
-          radial-gradient(circle at 20% 80%, rgba(139, 195, 74, 0.2) 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.2) 0%, transparent 50%),
-          radial-gradient(circle at 40% 40%, rgba(104, 159, 56, 0.15) 0%, transparent 50%);
-        animation: natureFloat 8s ease-in-out infinite;
+          radial-gradient(circle at 20% 80%, rgba(139, 195, 74, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.25) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(104, 159, 56, 0.2) 0%, transparent 50%),
+          radial-gradient(circle at 60% 70%, rgba(129, 199, 132, 0.15) 0%, transparent 50%);
+        animation: natureFloat 12s ease-in-out infinite;
+      }
+
+      /* Floating Leaf Particles */
+      .nature-bg::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          radial-gradient(2px 2px at 20px 30px, rgba(139, 195, 74, 0.4), transparent),
+          radial-gradient(2px 2px at 40px 70px, rgba(76, 175, 80, 0.3), transparent),
+          radial-gradient(1px 1px at 90px 40px, rgba(104, 159, 56, 0.5), transparent),
+          radial-gradient(1px 1px at 130px 80px, rgba(129, 199, 132, 0.4), transparent);
+        background-repeat: repeat;
+        background-size: 150px 100px;
+        animation: floatingParticles 20s linear infinite;
       }
 
       @keyframes natureFloat {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(-15px) rotate(0.5deg); }
+        0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+        25% { transform: translateY(-10px) rotate(0.3deg); opacity: 0.8; }
+        50% { transform: translateY(-20px) rotate(0.5deg); opacity: 0.9; }
+        75% { transform: translateY(-15px) rotate(0.2deg); opacity: 0.7; }
       }
 
-      .main-container {
+      @keyframes floatingParticles {
+        0% { transform: translateY(0px) translateX(0px); }
+        100% { transform: translateY(-100vh) translateX(50px); }
+      }
+
+      /* Expanded Layout Grid for Ads */
+      .page-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr 320px;
+        gap: 2rem;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 100vh;
+      }
+
+      .left-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .main-content {
+        min-width: 0;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .right-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      /* Premium Ad Space with Glassmorphism */
+      .ad-space {
         background: rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(139, 195, 74, 0.25);
         border-radius: 25px;
-        padding: 2.5rem;
-        max-width: 900px;
-        margin: 2rem auto;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        text-align: center;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: sticky;
+        top: 2rem;
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+      }
+
+      .ad-space::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(139, 195, 74, 0.1), transparent);
+        transition: left 0.8s ease;
+      }
+
+      .ad-space:hover::before {
+        left: 100%;
+      }
+
+      .ad-space:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(139, 195, 74, 0.4);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow:
+          0 25px 50px rgba(0, 0, 0, 0.15),
+          0 0 30px rgba(139, 195, 74, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      }
+
+      .ad-space.large {
+        min-height: 650px;
+      }
+
+      .ad-placeholder {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+        line-height: 1.8;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Interactive Header and Footer Ads */
+      .header-ad, .footer-ad {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(139, 195, 74, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        min-height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
       }
 
+      .header-ad:hover, .footer-ad:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        border-color: rgba(139, 195, 74, 0.4);
+      }
+
+      /* Enhanced Main Container with Depth */
+      .main-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 35px;
+        padding: 3.5rem;
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      /* Animated Border Gradient */
       .main-container::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(139, 195, 74, 0.6), transparent);
+        height: 2px;
+        background: linear-gradient(90deg,
+          transparent,
+          rgba(139, 195, 74, 0.8),
+          rgba(76, 175, 80, 0.6),
+          rgba(139, 195, 74, 0.8),
+          transparent
+        );
+        animation: borderGlow 3s ease-in-out infinite;
       }
 
+      @keyframes borderGlow {
+        0%, 100% { opacity: 0.5; transform: scaleX(0.8); }
+        50% { opacity: 1; transform: scaleX(1); }
+      }
+
+      /* Enhanced Logo with 3D Effect */
       .logo-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
+        position: relative;
       }
 
       .logo {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
-        border-radius: 18px;
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 50%, #558b2f 100%);
+        border-radius: 22px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 2.2rem;
-        margin-right: 1rem;
-        box-shadow: 0 8px 25px rgba(139, 195, 74, 0.4);
-        animation: gentlePulse 3s infinite;
+        margin-right: 1.5rem;
+        box-shadow:
+          0 15px 35px rgba(139, 195, 74, 0.4),
+          inset 0 2px 0 rgba(255, 255, 255, 0.2),
+          inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+        animation: logoFloat 4s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
       }
 
-      @keyframes gentlePulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.03); }
+      .logo::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        animation: logoShine 3s ease-in-out infinite;
+      }
+
+      @keyframes logoFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(1deg); }
+      }
+
+      @keyframes logoShine {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
       }
 
       h1 {
         color: #ffffff;
-        font-weight: 700;
-        font-size: 2.5rem;
+        font-weight: 800;
+        font-size: 2.8rem;
         margin: 0;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        text-shadow:
+          0 2px 8px rgba(0, 0, 0, 0.3),
+          0 0 20px rgba(139, 195, 74, 0.3);
+        background: linear-gradient(135deg, #ffffff 0%, #e8f5e8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       .subtitle {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1rem;
-        margin-top: 0.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+        margin-top: 0.8rem;
         font-weight: 400;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       }
 
-      /* Bird Slideshow */
+      /* Cinematic Bird Slideshow */
       .slideshow-container {
         position: relative;
         max-width: 100%;
-        margin: 2rem 0;
-        border-radius: 20px;
+        margin: 2.5rem 0;
+        border-radius: 30px;
         overflow: hidden;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(139, 195, 74, 0.2);
+        background: rgba(0, 0, 0, 0.2);
       }
 
       .slide {
@@ -137,18 +331,31 @@
 
       .slide.active {
         display: block;
-        animation: slideIn 0.8s ease-in-out;
+        animation: cinematicSlide 1s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      @keyframes slideIn {
-        from { opacity: 0; transform: translateX(30px); }
-        to { opacity: 1; transform: translateX(0); }
+      @keyframes cinematicSlide {
+        from {
+          opacity: 0;
+          transform: scale(1.1) translateX(50px);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateX(0);
+          filter: blur(0px);
+        }
       }
 
       .slide img {
         width: 100%;
-        height: 300px;
+        height: 400px;
         object-fit: cover;
+        transition: transform 8s ease-out;
+      }
+
+      .slide.active img {
+        transform: scale(1.05);
       }
 
       .slide-caption {
@@ -156,221 +363,360 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
         color: white;
-        padding: 2rem 1.5rem 1.5rem;
+        padding: 3rem 2rem 2rem;
         text-align: center;
       }
 
       .slide-caption h3 {
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       }
 
       .slide-caption p {
-        font-size: 0.9rem;
-        opacity: 0.9;
+        font-size: 1rem;
+        opacity: 0.95;
         margin: 0;
+        line-height: 1.6;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
       }
 
-      /* Slideshow indicators */
+      /* Elegant slideshow indicators */
       .slideshow-indicators {
         text-align: center;
-        margin-top: 1rem;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
       }
 
       .indicator {
-        display: inline-block;
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 50%;
-        margin: 0 5px;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        border: 2px solid transparent;
+      }
+
+      .indicator::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        transition: all 0.4s ease;
       }
 
       .indicator.active {
         background: #8bc34a;
-        transform: scale(1.2);
+        transform: scale(1.4);
+        box-shadow:
+          0 0 15px rgba(139, 195, 74, 0.6),
+          0 0 30px rgba(139, 195, 74, 0.3);
       }
 
+      .indicator.active::before {
+        border-color: rgba(139, 195, 74, 0.4);
+        transform: scale(1.5);
+      }
+
+      /* Interactive Upload Section */
       .upload-section {
-        background: rgba(255, 255, 255, 0.05);
-        border: 2px dashed rgba(139, 195, 74, 0.4);
-        border-radius: 18px;
-        padding: 2rem;
-        margin: 2rem 0;
-        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px dashed rgba(139, 195, 74, 0.5);
+        border-radius: 25px;
+        padding: 3rem;
+        margin: 2.5rem 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
+        overflow: hidden;
+      }
+
+      .upload-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, rgba(139, 195, 74, 0.05) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
       }
 
       .upload-section:hover {
-        border-color: rgba(139, 195, 74, 0.7);
-        background: rgba(139, 195, 74, 0.08);
-        transform: translateY(-2px);
+        border-color: rgba(139, 195, 74, 0.8);
+        background: rgba(139, 195, 74, 0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(139, 195, 74, 0.2);
       }
 
+      .upload-section:hover::before {
+        opacity: 1;
+      }
+
+      /* Enhanced Form Controls */
       .form-control {
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(139, 195, 74, 0.3);
-        border-radius: 12px;
-        padding: 1rem;
-        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(139, 195, 74, 0.4);
+        border-radius: 15px;
+        padding: 1.2rem;
+        font-size: 1.05rem;
         color: #ffffff;
         transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
       }
 
       .form-control:focus {
-        background: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.2);
         border-color: #8bc34a;
-        box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, 0.25);
+        box-shadow:
+          0 0 0 0.25rem rgba(139, 195, 74, 0.25),
+          0 8px 25px rgba(139, 195, 74, 0.15);
         color: #ffffff;
+        transform: translateY(-2px);
       }
 
       .form-control::file-selector-button {
         background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
         border: none;
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        padding: 0.6rem 1.2rem;
         color: white;
-        font-weight: 500;
+        font-weight: 600;
         margin-right: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 15px rgba(139, 195, 74, 0.3);
       }
 
       .form-control::file-selector-button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(139, 195, 74, 0.4);
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
-        border: none;
-        border-radius: 12px;
-        padding: 0.9rem 2rem;
-        font-size: 1rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        box-shadow: 0 8px 25px rgba(139, 195, 74, 0.3);
-      }
-
-      .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 30px rgba(139, 195, 74, 0.4);
+        box-shadow: 0 8px 25px rgba(139, 195, 74, 0.4);
         background: linear-gradient(135deg, #9ccc65 0%, #7cb342 100%);
       }
 
-      .result-section {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(139, 195, 74, 0.2);
-        border-radius: 20px;
-        padding: 2rem;
-        margin-top: 2rem;
-        backdrop-filter: blur(10px);
-        animation: slideUp 0.6s ease-out;
+      /* Premium Button Design */
+      .btn-primary {
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 50%, #558b2f 100%);
+        border: none;
+        border-radius: 15px;
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow:
+          0 10px 30px rgba(139, 195, 74, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
       }
 
-      @keyframes slideUp {
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow:
+          0 15px 40px rgba(139, 195, 74, 0.4),
+          0 0 30px rgba(139, 195, 74, 0.3);
+        background: linear-gradient(135deg, #9ccc65 0%, #7cb342 50%, #689f38 100%);
+      }
+
+      /* Cinematic Result Section */
+      .result-section {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(139, 195, 74, 0.3);
+        border-radius: 30px;
+        padding: 3rem;
+        margin-top: 2.5rem;
+        backdrop-filter: blur(15px);
+        animation: resultReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      }
+
+      @keyframes resultReveal {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(50px) scale(0.95);
         }
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: translateY(0) scale(1);
         }
       }
 
       .result-header {
         color: #ffffff;
-        font-size: 1.6rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
         text-align: center;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
 
       .prediction-text {
-        font-size: 1.8rem;
-        font-weight: 700;
+        font-size: 2rem;
+        font-weight: 800;
         color: #8bc34a;
         text-transform: capitalize;
-        margin-bottom: 1rem;
-        text-shadow: 0 2px 8px rgba(139, 195, 74, 0.3);
+        margin-bottom: 1.2rem;
+        text-shadow:
+          0 2px 8px rgba(139, 195, 74, 0.3),
+          0 0 20px rgba(139, 195, 74, 0.2);
       }
 
       .probability-text {
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 2rem;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       }
 
+      /* Animated Progress Bar */
       .progress {
-        height: 10px;
-        border-radius: 8px;
+        height: 12px;
+        border-radius: 10px;
         background: rgba(255, 255, 255, 0.15);
         overflow: hidden;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+      }
+
+      .progress::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        animation: progressShimmer 2s ease-in-out infinite;
+      }
+
+      @keyframes progressShimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
       }
 
       .progress-bar {
-        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
-        border-radius: 8px;
-        transition: width 1s ease-in-out;
-        box-shadow: 0 2px 8px rgba(139, 195, 74, 0.5);
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 50%, #558b2f 100%);
+        border-radius: 10px;
+        transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow:
+          0 0 15px rgba(139, 195, 74, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .progress-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        animation: barGlow 2s ease-in-out infinite;
+      }
+
+      @keyframes barGlow {
+        0%, 100% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
       }
 
       .image {
         max-width: 100%;
         height: auto;
-        border-radius: 15px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-        border: 2px solid rgba(139, 195, 74, 0.3);
-        transition: all 0.3s ease;
+        border-radius: 20px;
+        box-shadow:
+          0 15px 40px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(139, 195, 74, 0.3);
+        border: 3px solid rgba(139, 195, 74, 0.4);
+        transition: all 0.4s ease;
       }
 
       .image:hover {
-        transform: scale(1.02);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        transform: scale(1.03);
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.4),
+          0 0 30px rgba(139, 195, 74, 0.3);
       }
 
       .upload-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        opacity: 0.8;
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
       }
 
-      /* Instructions and Privacy Section */
+      /* Premium Info Sections */
       .info-section {
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(139, 195, 74, 0.2);
-        border-radius: 18px;
-        padding: 2rem;
-        margin: 2rem 0;
-        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(139, 195, 74, 0.25);
+        border-radius: 25px;
+        padding: 3rem;
+        margin: 2.5rem 0;
+        backdrop-filter: blur(15px);
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .info-section:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          0 15px 40px rgba(0, 0, 0, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
       }
 
       .info-section h3 {
         color: #8bc34a;
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
         display: flex;
         align-items: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .info-section h3::before {
         content: '';
-        width: 4px;
-        height: 20px;
-        background: #8bc34a;
-        border-radius: 2px;
-        margin-right: 0.8rem;
+        width: 5px;
+        height: 24px;
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        border-radius: 3px;
+        margin-right: 1.2rem;
+        box-shadow: 0 2px 8px rgba(139, 195, 74, 0.4);
       }
 
       .info-section ul {
@@ -379,11 +725,13 @@
       }
 
       .info-section li {
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 0.8rem;
-        padding-left: 1.5rem;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 1.2rem;
+        padding-left: 2.5rem;
         position: relative;
-        line-height: 1.5;
+        line-height: 1.7;
+        font-size: 1.05rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
 
       .info-section li::before {
@@ -391,171 +739,355 @@
         position: absolute;
         left: 0;
         top: 0;
+        font-size: 1.1rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
       }
 
       .privacy-highlight {
-        background: rgba(139, 195, 74, 0.1);
-        border-left: 4px solid #8bc34a;
-        padding: 1rem;
-        border-radius: 0 8px 8px 0;
-        margin: 1rem 0;
+        background: rgba(139, 195, 74, 0.15);
+        border-left: 5px solid #8bc34a;
+        padding: 2rem;
+        border-radius: 0 15px 15px 0;
+        margin: 2rem 0;
+        box-shadow: 0 5px 15px rgba(139, 195, 74, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .privacy-highlight::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(139, 195, 74, 0.05), transparent);
+        animation: privacyGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes privacyGlow {
+        0%, 100% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
       }
 
       .privacy-highlight p {
         margin: 0;
-        color: rgba(255, 255, 255, 0.95);
-        font-weight: 500;
+        color: rgba(255, 255, 255, 0.98);
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Responsive Design Enhancements */
+      @media (max-width: 1400px) {
+        .page-layout {
+          grid-template-columns: 280px 1fr 280px;
+          gap: 1.5rem;
+          padding: 1.5rem;
+        }
+
+        .ad-space {
+          min-height: 250px;
+          padding: 1.5rem;
+        }
+
+        .ad-space.large {
+          min-height: 550px;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .page-layout {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          max-width: 900px;
+        }
+
+        .left-sidebar, .right-sidebar {
+          display: none;
+        }
+
+        .header-ad, .footer-ad {
+          display: flex;
+        }
+
+        .main-content {
+          max-width: 100%;
+        }
       }
 
       @media (max-width: 768px) {
         .main-container {
-          margin: 1rem;
-          padding: 1.5rem;
+          margin: 0;
+          padding: 2.5rem;
+          border-radius: 25px;
         }
 
         h1 {
-          font-size: 2rem;
+          font-size: 2.2rem;
         }
 
         .logo {
-          width: 55px;
-          height: 55px;
-          font-size: 1.8rem;
+          width: 70px;
+          height: 70px;
+          font-size: 2rem;
         }
 
         .slide img {
-          height: 250px;
+          height: 300px;
         }
 
         .slide-caption {
-          padding: 1.5rem 1rem 1rem;
+          padding: 2rem 1.5rem 1.5rem;
         }
 
         .slide-caption h3 {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
+
+        .slide-caption p {
+          font-size: 0.95rem;
+        }
+
+        .upload-section {
+          padding: 2.5rem;
+        }
+
+        .info-section {
+          padding: 2.5rem;
+        }
+      }
+
+      /* Hide mobile ads on desktop */
+      @media (min-width: 1201px) {
+        .header-ad, .footer-ad {
+          display: none;
+        }
+      }
+
+      /* Additional Premium Features */
+      .feature-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        animation: badgePulse 2s ease-in-out infinite;
+      }
+
+      @keyframes badgePulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      /* Loading Animation Enhancement */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .loading-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(139, 195, 74, 0.3);
+        border-top: 4px solid #8bc34a;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
     </style>
   </head>
   <body>
     <div class="nature-bg"></div>
 
-    <div class="container">
-      <div class="main-container">
-        <!-- Header -->
-        <div class="logo-container">
-          <div class="logo">🦅</div>
-          <div>
-            <h1 class="text-center">Bird Classifier</h1>
-            <p class="subtitle text-center">AI-Powered Bird Species Recognition</p>
-          </div>
+    <div class="page-layout">
+      <!-- Left Sidebar Ads (Desktop) -->
+      <div class="left-sidebar">
+        <div class="ad-space">
+          <div class="feature-badge">Premium</div>
+          <div class="ad-placeholder">Premium<br>Advertisement<br>Space<br><br>300×250<br><br>High Engagement<br>Placement</div>
         </div>
-
-        <!-- 1. Bird Slideshow (First) -->
-        <div class="slideshow-container">
-          <div class="slide active">
-            <img src="https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg" alt="Cardinal">
-            <div class="slide-caption">
-              <h3>Northern Cardinal</h3>
-              <p>Recognizable by their bright red plumage and distinctive crest</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img src="https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg" alt="Blue Jay">
-            <div class="slide-caption">
-              <h3>Blue Jay</h3>
-              <p>Intelligent birds known for their vibrant blue coloring and complex social behavior</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img src="https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg" alt="Robin">
-            <div class="slide-caption">
-              <h3>American Robin</h3>
-              <p>Often considered a sign of spring with their distinctive orange-red breast</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img src="https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg" alt="Owl">
-            <div class="slide-caption">
-              <h3>Great Horned Owl</h3>
-              <p>Powerful nocturnal hunters with distinctive ear tufts and piercing eyes</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img src="https://images.pexels.com/photos/1300355/pexels-photo-1300355.jpeg" alt="Hummingbird">
-            <div class="slide-caption">
-              <h3>Ruby-throated Hummingbird</h3>
-              <p>Tiny birds capable of hovering and flying backwards with incredible speed</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="slideshow-indicators">
-          <span class="indicator active" onclick="currentSlide(1)"></span>
-          <span class="indicator" onclick="currentSlide(2)"></span>
-          <span class="indicator" onclick="currentSlide(3)"></span>
-          <span class="indicator" onclick="currentSlide(4)"></span>
-          <span class="indicator" onclick="currentSlide(5)"></span>
-        </div>
-
-        <!-- 2. Image Upload Section (Second) -->
-        <div class="upload-section">
-          <div class="text-center">
-            <div class="upload-icon">🎯</div>
-            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem;">
-              Select a bird image to identify the species with our AI
-            </p>
-          </div>
-
-          <form class="p-3 text-center" action='/' method="post" enctype="multipart/form-data">
-            <input class="form-control" type="file" name="imagefile">
-            <input class="btn btn-primary mt-3" type="submit" value="Predict Bird Species">
-          </form>
-        </div>
-
-        <!-- 3. Prediction Results (Third) -->
-        {% if prediction %}
-        <div class="result-section">
-          <h3 class="result-header">🎉 Species Identified</h3>
-          <div class="text-center">
-            <p class="prediction-text">Bird species: {{ prediction }}</p>
-            <p class="probability-text">Confidence: {{ prob }}%</p>
-
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: {{ prob }}%;" aria-valuenow="{{ prob }}" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-
-            <img src="{{ url_for('static', filename=file) }}" class="image" alt="Classified bird image">
-          </div>
-        </div>
-        {% endif %}
-
-        <!-- 4. Instructions Section (Fourth) -->
-        <div class="info-section">
-          <h3>How to Use the Bird Classifier</h3>
-          <ul>
-            <li>Click "Choose File" above to select a clear photo of a bird</li>
-            <li>Make sure the bird is the main subject and clearly visible</li>
-            <li>Supported formats: JPEG, PNG, WebP (max 10MB)</li>
-            <li>Click "Predict Bird Species" to analyze your image</li>
-            <li>View the results with confidence percentage and species information</li>
-          </ul>
-        </div>
-
-        <!-- 5. Privacy Section (Fifth) -->
-        <div class="info-section">
-          <h3>Privacy & Security</h3>
-          <div class="privacy-highlight">
-            <p>🔒 Your images are processed securely and are NOT saved or stored on our servers</p>
-          </div>
-          <ul>
-            <li>Images are only used for classification and immediately discarded</li>
-            <li>No personal data is collected or stored</li>
-            <li>All processing happens in real-time without data retention</li>
-            <li>Your privacy and data security are our top priorities</li>
-          </ul>
+        <div class="ad-space large">
+          <div class="ad-placeholder">Skyscraper<br>Advertisement<br>Space<br><br>300×600<br><br>Maximum Visibility<br>Premium Location<br><br>Perfect for<br>Brand Campaigns</div>
         </div>
       </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header Ad (Mobile) -->
+        <div class="header-ad">
+          <div class="ad-placeholder">Mobile Banner Advertisement - 728×90<br>High Impact Header Placement</div>
+        </div>
+
+        <div class="main-container">
+          <!-- Header -->
+          <div class="logo-container">
+            <div class="logo">🦅</div>
+            <div>
+              <h1 class="text-center">Bird Classifier</h1>
+              <p class="subtitle text-center">AI-Powered Bird Species Recognition</p>
+            </div>
+          </div>
+
+          <!-- 1. Enhanced Bird Slideshow -->
+          <div class="slideshow-container">
+            <div class="slide active">
+              <img src="https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg" alt="Cardinal">
+              <div class="slide-caption">
+                <h3>Northern Cardinal</h3>
+                <p>Recognizable by their brilliant red plumage and distinctive crest, these songbirds are year-round residents across eastern North America</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg" alt="Blue Jay">
+              <div class="slide-caption">
+                <h3>Blue Jay</h3>
+                <p>Highly intelligent corvids known for their striking blue coloration, complex social behaviors, and remarkable memory capabilities</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg" alt="Robin">
+              <div class="slide-caption">
+                <h3>American Robin</h3>
+                <p>Beloved harbingers of spring with their warm orange-red breast, these thrushes are among North America's most familiar birds</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg" alt="Owl">
+              <div class="slide-caption">
+                <h3>Great Horned Owl</h3>
+                <p>Apex nocturnal predators with exceptional hearing and silent flight, distinguished by their prominent ear tufts and piercing yellow eyes</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://images.pexels.com/photos/1300355/pexels-photo-1300355.jpeg" alt="Hummingbird">
+              <div class="slide-caption">
+                <h3>Ruby-throated Hummingbird</h3>
+                <p>Remarkable aerial acrobats capable of hovering, flying backwards, and beating their wings up to 80 times per second</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="slideshow-indicators">
+            <span class="indicator active" onclick="currentSlide(1)"></span>
+            <span class="indicator" onclick="currentSlide(2)"></span>
+            <span class="indicator" onclick="currentSlide(3)"></span>
+            <span class="indicator" onclick="currentSlide(4)"></span>
+            <span class="indicator" onclick="currentSlide(5)"></span>
+          </div>
+
+          <!-- 2. Enhanced Image Upload Section -->
+          <div class="upload-section">
+            <div class="text-center">
+              <div class="upload-icon">🎯</div>
+              <p style="color: rgba(255, 255, 255, 0.95); margin-bottom: 2rem; font-size: 1.2rem; font-weight: 500;">
+                Select a bird image to identify the species with our advanced AI technology
+              </p>
+            </div>
+
+            <form class="p-3 text-center" action='/' method="post" enctype="multipart/form-data">
+              <input class="form-control" type="file" name="imagefile">
+              <input class="btn btn-primary mt-4" type="submit" value="Predict Bird Species">
+            </form>
+          </div>
+
+          <!-- 3. Enhanced Prediction Results -->
+          {% if prediction %}
+          <div class="result-section">
+            <h3 class="result-header">🎉 Species Successfully Identified</h3>
+            <div class="text-center">
+              <p class="prediction-text">{{ prediction }}</p>
+              <p class="probability-text">Confidence Level: {{ prob }}%</p>
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: {{ prob }}%;" aria-valuenow="{{ prob }}" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+
+              <img src="{{ url_for('static', filename=file) }}" class="image" alt="Classified bird image">
+            </div>
+          </div>
+          {% endif %}
+
+          <!-- 4. Enhanced Instructions Section -->
+          <div class="info-section">
+            <h3>How to Use the Bird Classifier</h3>
+            <ul>
+              <li>Click "Choose File" to select a high-quality photo of a bird</li>
+              <li>Ensure the bird is clearly visible and well-lit in the image</li>
+              <li>Supported formats: JPEG, PNG, WebP (maximum 10MB file size)</li>
+              <li>Click "Predict Bird Species" to analyze your image with AI</li>
+              <li>View detailed results with confidence percentage and species information</li>
+              <li>For best results, use images with the bird as the main subject</li>
+            </ul>
+          </div>
+
+          <!-- 5. Enhanced Privacy Section -->
+          <div class="info-section">
+            <h3>Privacy & Security Guarantee</h3>
+            <div class="privacy-highlight">
+              <p>🔒 Your images are processed securely and are NEVER saved, stored, or shared</p>
+            </div>
+            <ul>
+              <li>All images are processed in real-time and immediately discarded after analysis</li>
+              <li>No personal data, metadata, or image content is collected or retained</li>
+              <li>Processing happens on secure servers with enterprise-grade encryption</li>
+              <li>Your privacy and data security are our absolute top priorities</li>
+              <li>We comply with GDPR, CCPA, and international privacy regulations</li>
+              <li>Zero tracking, zero cookies, zero data collection beyond classification</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Ad (Mobile) -->
+        <div class="footer-ad">
+          <div class="ad-placeholder">Mobile Banner Advertisement - 728×90<br>Strategic Footer Placement</div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar Ads (Desktop) -->
+      <div class="right-sidebar">
+        <div class="ad-space">
+          <div class="ad-placeholder">Square<br>Advertisement<br>Space<br><br>300×250<br><br>Perfect for<br>Product Showcases<br>& Brand Promotion</div>
+        </div>
+        <div class="ad-space">
+          <div class="ad-placeholder">Medium<br>Rectangle<br>Advertisement<br><br>300×250<br><br>High Click-Through<br>Rate Placement<br><br>Ideal for<br>Call-to-Action</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loading-spinner"></div>
     </div>
 
     <!-- Bootstrap JS -->
@@ -565,12 +1097,12 @@
       let slideIndex = 1;
       showSlide(slideIndex);
 
-      // Auto-advance slides every 4 seconds
+      // Auto-advance slides every 5 seconds with smooth transitions
       setInterval(function() {
         slideIndex++;
         if (slideIndex > 5) slideIndex = 1;
         showSlide(slideIndex);
-      }, 4000);
+      }, 5000);
 
       function currentSlide(n) {
         showSlide(slideIndex = n);
@@ -594,6 +1126,30 @@
         slides[slideIndex - 1].classList.add("active");
         indicators[slideIndex - 1].classList.add("active");
       }
+
+      // Enhanced form submission with loading overlay
+      document.querySelector('form').addEventListener('submit', function() {
+        document.getElementById('loadingOverlay').classList.add('active');
+      });
+
+      // Parallax effect for background
+      window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('.nature-bg');
+        const speed = scrolled * 0.5;
+        parallax.style.transform = `translateY(${speed}px)`;
+      });
+
+      // Add smooth hover effects to ad spaces
+      document.querySelectorAll('.ad-space').forEach(ad => {
+        ad.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+
+        ad.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+        });
+      });
     </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>

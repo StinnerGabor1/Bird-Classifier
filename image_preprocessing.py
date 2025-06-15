@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_array
 def preprocess_image(image):
-    IMG_SIZE = (256, 256)
+    IMG_SIZE = (300, 300)
 
     # Create ImageDataGenerator (no augmentation, just preprocessing)
     datagen  = ImageDataGenerator()
