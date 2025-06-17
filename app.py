@@ -7,12 +7,10 @@ from image_preprocessing import preprocess_image
 import json
 import os
 
-os.environ['TF_ENABLE_ONEDNN_OPTS']= "0"
-
 app=Flask(__name__)
 model_name="model"
 model = tf.keras.Sequential([
-    tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default",trainable=True,)
+    tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default",trainable=True)
 ])
 
 with open('bird_classes.json', 'r') as f:
