@@ -6,6 +6,9 @@ import pandas as pd
 from image_preprocessing import preprocess_image
 import json
 import os
+print("Contents of model1 directory:", os.listdir("model1"))
+print("Contents of model1/variables:", os.listdir("model1/variables"))
+
 
 tf.get_logger().setLevel('ERROR')
 
