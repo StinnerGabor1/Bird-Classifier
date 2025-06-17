@@ -8,7 +8,7 @@ import json
 import os
 
 app=Flask(__name__)
-model_name="model"
+model_name="model1"
 model = tf.keras.Sequential([
     tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default",trainable=False)
 ])
