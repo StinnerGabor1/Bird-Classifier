@@ -10,7 +10,7 @@ import os
 app=Flask(__name__)
 model_name="model"
 model = tf.keras.Sequential([
-    tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default",trainable=True)
+    tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default",trainable=False)
 ])
 
 with open('bird_classes.json', 'r') as f:
