@@ -8,6 +8,7 @@ with h5py.File("model 2.h5", "r+") as f:
     def update_rotation_factor(cfg):
         if isinstance(cfg, dict):
             if cfg.get("class_name") == "RandomRotation":
+                print("OK")
                 cfg["config"]["factor"] = 0.4  # Change this value as needed
             for key in cfg:
                 update_rotation_factor(cfg[key])

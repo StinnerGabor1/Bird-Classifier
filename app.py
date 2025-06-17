@@ -7,11 +7,17 @@ from image_preprocessing import preprocess_image
 import json
 import os
 
+tf.get_logger().setLevel('ERROR')
+
 app=Flask(__name__)
-model_name="model1"
-model = tf.keras.Sequential([
-    tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default",trainable=False)
-])
+
+@app.before_request
+def load_model():
+    global model
+    model_name="model1"
+    model = tf.keras.Sequential([
+        tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default", trainable=False)
+    ])
 
 with open('bird_classes.json', 'r') as f:
     class_data = json.load(f)
@@ -35,11 +41,8 @@ def classify():
     img= preprocess_image(img)
 
     prediction= model(img)
-    print(prediction)
     y_pred= tf.math.argmax(model(img)["dense"], axis=1).numpy()
-    print(y_pred)
     prediction= labels[y_pred[0]+1]
-    print(prediction)
     prob=[x for x in np.asarray(tf.reduce_max(model(img)["dense"], axis = 1))][0]
     prob= np.round(prob,2)
 
