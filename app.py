@@ -1,16 +1,19 @@
 from flask import Flask, render_template, request
-from tensorflow.keras.models import load_model
 import numpy as np
 import tensorflow as tf
 import cv2
 import pandas as pd
 from image_preprocessing import preprocess_image
 import json
+import os
+
+os.environ['TF_ENABLE_ONEDNN_OPTS']= "0"
 
 app=Flask(__name__)
-model_name="model.h5"
-model= load_model(model_name)
-path = "animals"
+model_name="model_test"
+model = tf.keras.Sequential([
+    tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default",trainable=False,)
+])
 
 with open('bird_classes.json', 'r') as f:
     class_data = json.load(f)
@@ -32,11 +35,14 @@ def classify():
 
     img = cv2.imread(image_path)
     img= preprocess_image(img)
-    y_pred= tf.math.argmax(model.predict(img), axis=1).numpy()
+
+    prediction= model(img)
+    print(prediction)
+    y_pred= tf.math.argmax(model(img)["dense"], axis=1).numpy()
     print(y_pred)
     prediction= labels[y_pred[0]+1]
     print(prediction)
-    prob=[x for x in np.asarray(tf.reduce_max(model.predict(img), axis = 1))][0] *100
+    prob=[x for x in np.asarray(tf.reduce_max(model(img)["dense"], axis = 1))][0]
     prob= np.round(prob,2)
 
     return render_template("index.html",prediction=prediction ,prob=prob, file=st_image_path)
