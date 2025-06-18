@@ -7,9 +7,6 @@ from image_preprocessing import preprocess_image
 import json
 from load_custom_model import load_custom_model
 
-"""print("Contents of model1 directory:", os.listdir("model1"))
-print("Contents of model1/variables:", os.listdir("model1/variables"))"""
-
 tf.get_logger().setLevel('ERROR')
 
 app=Flask(__name__)
