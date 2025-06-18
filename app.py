@@ -5,8 +5,8 @@ import cv2
 import pandas as pd
 from image_preprocessing import preprocess_image
 import json
-import os
-import zipfile
+from load_custom_model import load_custom_model
+
 """print("Contents of model1 directory:", os.listdir("model1"))
 print("Contents of model1/variables:", os.listdir("model1/variables"))"""
 
@@ -17,16 +17,9 @@ app=Flask(__name__)
 @app.before_request
 def load_model():
     global model
-    model_name="birds_inception_inat"
-    if not os.path.exists("birds_inception_inat"):
-        print("Extracting model1.zip...")
-        with zipfile.ZipFile("model1.zip", 'r') as zip_ref:
-            zip_ref.extractall(".")
-        print("Extraction complete.")
+    #model_name="birds_inception_inat"
 
-    model = tf.keras.Sequential([
-        tf.keras.layers.TFSMLayer(model_name, call_endpoint="serving_default", trainable=False)
-    ])
+    model= load_custom_model()
 
 with open('bird_classes.json', 'r') as f:
     class_data = json.load(f)
