@@ -10,3 +10,5 @@ pandas==2.2.2
 pillow
 scikit-learn==1.5.1
 tensorflow_hub==0.15.0
+gdown
+requests
