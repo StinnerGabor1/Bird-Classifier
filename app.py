@@ -11,12 +11,7 @@ tf.get_logger().setLevel('ERROR')
 
 app=Flask(__name__)
 
-@app.before_request
-def load_model():
-    global model
-    #model_name="birds_inception_inat"
-
-    model= load_custom_model()
+model= load_custom_model()
 
 with open('bird_classes.json', 'r') as f:
     class_data = json.load(f)
