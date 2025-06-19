@@ -18,6 +18,8 @@ def download_and_extract_model():
         with zipfile.ZipFile(ZIP_PATH, 'r') as zip_ref:
             zip_ref.extractall(MODEL_DIR)
 
+        os.remove(ZIP_PATH)
+
         print("Model downloaded and extracted.")
 
 def load_custom_model():
