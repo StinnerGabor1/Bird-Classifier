@@ -86,9 +86,9 @@
       /* Expanded Layout Grid for Ads */
       .page-layout {
         display: grid;
-        grid-template-columns: 320px 1fr 320px;
+        grid-template-columns: 250px 1fr 250px;
         gap: 2rem;
-        max-width: 1600px;
+        max-width: 1500px;
         margin: 0 auto;
         padding: 2rem;
         min-height: 100vh;
@@ -102,7 +102,7 @@
 
       .main-content {
         min-width: 0;
-        max-width: 800px;
+        max-width: 1000px;
         margin: 0 auto;
       }
 
@@ -311,7 +311,7 @@
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       }
 
-      /* Cinematic Bird Slideshow */
+      /* Enhanced Cinematic Bird Slideshow */
       .slideshow-container {
         position: relative;
         max-width: 100%;
@@ -384,18 +384,19 @@
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
       }
 
-      /* Elegant slideshow indicators */
+      /* Enhanced slideshow indicators */
       .slideshow-indicators {
         text-align: center;
         margin-top: 2rem;
         display: flex;
         justify-content: center;
-        gap: 1rem;
+        gap: 0.8rem;
+        flex-wrap: wrap;
       }
 
       .indicator {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 50%;
         cursor: pointer;
@@ -678,6 +679,119 @@
         filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
       }
 
+      /* Bird Species Gallery Section */
+      .bird-gallery {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(139, 195, 74, 0.25);
+        border-radius: 30px;
+        padding: 3rem;
+        margin: 2.5rem 0;
+        backdrop-filter: blur(15px);
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        animation: galleryReveal 1s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      @keyframes galleryReveal {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .gallery-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .gallery-title {
+        color: #8bc34a;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 8px rgba(139, 195, 74, 0.3);
+      }
+
+      .gallery-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+        font-weight: 400;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(139, 195, 74, 0.2);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(139, 195, 74, 0.5);
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.2),
+          0 0 30px rgba(139, 195, 74, 0.2);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-item-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 2rem 1rem 1rem;
+        text-align: center;
+        transform: translateY(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .gallery-item:hover .gallery-item-overlay {
+        transform: translateY(0);
+      }
+
+      .gallery-item-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .gallery-item-description {
+        font-size: 0.85rem;
+        opacity: 0.9;
+        line-height: 1.4;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
       /* Premium Info Sections */
       .info-section {
         background: rgba(255, 255, 255, 0.08);
@@ -858,6 +972,36 @@
         .info-section {
           padding: 2.5rem;
         }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);;
+            gap: 15px;
+        }
+        .grid-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
+            object-fit: cover;
+        }
+        .grid-container img:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+          height: 140px;
+        }
+
+        .bird-gallery {
+          padding: 2rem;
+        }
+
+        .gallery-title {
+          font-size: 1.8rem;
+        }
       }
 
       /* Hide mobile ads on desktop */
@@ -925,6 +1069,11 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
+
+      /* Hidden gallery for dynamic content */
+      .bird-gallery.hidden {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -959,41 +1108,76 @@
             </div>
           </div>
 
-          <!-- 1. Enhanced Bird Slideshow -->
+          <!-- Enhanced Bird Slideshow with More Images -->
           <div class="slideshow-container">
             <div class="slide active">
-              <img src="https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg" alt="Cardinal">
+              <img src="https://www.allaboutbirds.org/guide/assets/photo/297087301-480px.jpg" alt="Cardinal">
               <div class="slide-caption">
                 <h3>Northern Cardinal</h3>
                 <p>Recognizable by their brilliant red plumage and distinctive crest, these songbirds are year-round residents across eastern North America</p>
               </div>
             </div>
             <div class="slide">
-              <img src="https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg" alt="Blue Jay">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Cyanocitta_cristata_blue_jay.jpg/1014px-Cyanocitta_cristata_blue_jay.jpg" alt="Blue Jay">
               <div class="slide-caption">
                 <h3>Blue Jay</h3>
                 <p>Highly intelligent corvids known for their striking blue coloration, complex social behaviors, and remarkable memory capabilities</p>
               </div>
             </div>
             <div class="slide">
-              <img src="https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg" alt="Robin">
+              <img src="https://www.allaboutbirds.org/guide/assets/photo/303441781-480px.jpg" alt="Robin">
               <div class="slide-caption">
                 <h3>American Robin</h3>
                 <p>Beloved harbingers of spring with their warm orange-red breast, these thrushes are among North America's most familiar birds</p>
               </div>
             </div>
             <div class="slide">
-              <img src="https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg" alt="Owl">
+              <img src="https://malheurfriends.org/wp-content/uploads/2025/02/49437585322_c676c7ad04_5k.jpg" alt="Owl">
               <div class="slide-caption">
                 <h3>Great Horned Owl</h3>
                 <p>Apex nocturnal predators with exceptional hearing and silent flight, distinguished by their prominent ear tufts and piercing yellow eyes</p>
               </div>
             </div>
             <div class="slide">
-              <img src="https://images.pexels.com/photos/1300355/pexels-photo-1300355.jpeg" alt="Hummingbird">
+              <img src="https://abcbirds.org/wp-content/uploads/2020/04/Ruby-throated-Hummingbird_Joel-Trick-Shutterstock.jpg" alt="Hummingbird">
               <div class="slide-caption">
                 <h3>Ruby-throated Hummingbird</h3>
                 <p>Remarkable aerial acrobats capable of hovering, flying backwards, and beating their wings up to 80 times per second</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://images.pexels.com/photos/133356/pexels-photo-133356.jpeg" alt="Eagle">
+              <div class="slide-caption">
+                <h3>Bald Eagle</h3>
+                <p>America's national bird, these majestic raptors are powerful hunters with incredible eyesight and impressive wingspans up to 8 feet</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Peacock_Plumage.jpg" alt="Peacock">
+              <div class="slide-caption">
+                <h3>Indian Peacock</h3>
+                <p>Stunning birds famous for their iridescent tail feathers and elaborate courtship displays, native to South Asia</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://cdn.britannica.com/19/264119-050-A8F52996/Pileated-woodpecker-dryocopus-pileatus-bird-ding-darling-Sanibel-Island-Florida.jpg" alt="Woodpecker">
+              <div class="slide-caption">
+                <h3>Pileated Woodpecker</h3>
+                <p>North America's largest woodpecker, known for their distinctive red crest and powerful drumming on tree trunks</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://cdn.download.ams.birds.cornell.edu/api/v2/asset/320036721/900" alt="Flamingo">
+              <div class="slide-caption">
+                <h3>American Flamingo</h3>
+                <p>Elegant wading birds with vibrant pink plumage, known for their unique feeding behavior and social flocking patterns</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="https://www.allaboutbirds.org/guide/assets/photo/303711061-480px.jpg" alt="Kingfisher">
+              <div class="slide-caption">
+                <h3>Belted Kingfisher</h3>
+                <p>Expert fishers with distinctive rattling calls, these birds dive headfirst into water to catch their prey</p>
               </div>
             </div>
           </div>
@@ -1004,9 +1188,14 @@
             <span class="indicator" onclick="currentSlide(3)"></span>
             <span class="indicator" onclick="currentSlide(4)"></span>
             <span class="indicator" onclick="currentSlide(5)"></span>
+            <span class="indicator" onclick="currentSlide(6)"></span>
+            <span class="indicator" onclick="currentSlide(7)"></span>
+            <span class="indicator" onclick="currentSlide(8)"></span>
+            <span class="indicator" onclick="currentSlide(9)"></span>
+            <span class="indicator" onclick="currentSlide(10)"></span>
           </div>
 
-          <!-- 2. Enhanced Image Upload Section -->
+          <!-- Enhanced Image Upload Section -->
           <div class="upload-section">
             <div class="text-center">
               <div class="upload-icon">🎯</div>
@@ -1021,7 +1210,7 @@
             </form>
           </div>
 
-          <!-- 3. Enhanced Prediction Results -->
+          <!-- Enhanced Prediction Results -->
           {% if prediction %}
           <div class="result-section">
             <h3 class="result-header">🎉 Species Successfully Identified</h3>
@@ -1033,12 +1222,26 @@
                 <div class="progress-bar" role="progressbar" style="width: {{ prob }}%;" aria-valuenow="{{ prob }}" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
 
-              <img src="{{ url_for('static', filename=file) }}" class="image" alt="Classified bird image">
+              <img src="{{ url_for('static', filename=file) }}" class="image" alt="Classified bird image" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Bird Species Gallery Section -->
+          <div class="bird-gallery" id="birdGallery">
+            <div class="gallery-header">
+              <h3 class="gallery-title">More {{ prediction }} Images</h3>
+              <p class="gallery-subtitle">Explore additional photos and information about this beautiful species</p>
+            </div>
+
+            <div class="grid-container">
+              {% for url in image_urls %}
+                 <img src="{{ (url) }}" alt="{{ bird_name }}" width="45%" loading="lazy" style="margin:10px;">
+              {% endfor %}
             </div>
           </div>
           {% endif %}
 
-          <!-- 4. Enhanced Instructions Section -->
+          <!-- Enhanced Instructions Section -->
           <div class="info-section">
             <h3>How to Use the Bird Classifier</h3>
             <ul>
@@ -1047,11 +1250,12 @@
               <li>Supported formats: JPEG, PNG, WebP (maximum 10MB file size)</li>
               <li>Click "Predict Bird Species" to analyze your image with AI</li>
               <li>View detailed results with confidence percentage and species information</li>
+              <li>Explore additional images and information about the identified species</li>
               <li>For best results, use images with the bird as the main subject</li>
             </ul>
           </div>
 
-          <!-- 5. Enhanced Privacy Section -->
+          <!-- Enhanced Privacy Section -->
           <div class="info-section">
             <h3>Privacy & Security Guarantee</h3>
             <div class="privacy-highlight">
@@ -1095,14 +1299,15 @@
 
     <script>
       let slideIndex = 1;
+      const totalSlides = 10; // Updated to match new slide count
       showSlide(slideIndex);
 
-      // Auto-advance slides every 5 seconds with smooth transitions
+      // Auto-advance slides every 4 seconds with smooth transitions
       setInterval(function() {
         slideIndex++;
-        if (slideIndex > 5) slideIndex = 1;
+        if (slideIndex > totalSlides) slideIndex = 1;
         showSlide(slideIndex);
-      }, 5000);
+      }, 4000);
 
       function currentSlide(n) {
         showSlide(slideIndex = n);
@@ -1126,6 +1331,154 @@
         slides[slideIndex - 1].classList.add("active");
         indicators[slideIndex - 1].classList.add("active");
       }
+
+      // Bird species gallery data
+      const birdGalleryData = {
+        'cardinal': [
+          {
+            image: 'https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg',
+            title: 'Male Cardinal',
+            description: 'Bright red male cardinal with distinctive black mask'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg',
+            title: 'Female Cardinal',
+            description: 'Brown female cardinal with warm reddish tinges'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg',
+            title: 'Cardinal Feeding',
+            description: 'Cardinal feeding on seeds and berries'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg',
+            title: 'Cardinal in Winter',
+            description: 'Cardinal perched on snow-covered branch'
+          }
+        ],
+        'blue jay': [
+          {
+            image: 'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg',
+            title: 'Blue Jay Portrait',
+            description: 'Close-up of blue jay showing distinctive crest'
+          },
+          {
+            image: 'https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg',
+            title: 'Blue Jay in Flight',
+            description: 'Blue jay displaying beautiful wing patterns'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg',
+            title: 'Blue Jay Family',
+            description: 'Blue jay with juveniles in nest'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg',
+            title: 'Blue Jay Foraging',
+            description: 'Blue jay searching for acorns and nuts'
+          }
+        ],
+        'robin': [
+          {
+            image: 'https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg',
+            title: 'American Robin',
+            description: 'Classic robin with orange-red breast'
+          },
+          {
+            image: 'https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg',
+            title: 'Robin on Ground',
+            description: 'Robin foraging for worms on grass'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg',
+            title: 'Robin Nest',
+            description: 'Robin tending to blue eggs in nest'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg',
+            title: 'Young Robin',
+            description: 'Juvenile robin with spotted breast'
+          }
+        ],
+        'owl': [
+          {
+            image: 'https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg',
+            title: 'Owl in Flight',
+            description: 'Silent flight of nocturnal hunter'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg',
+            title: 'Owl Eyes',
+            description: 'Piercing yellow eyes of night predator'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg',
+            title: 'Owl Family',
+            description: 'Owl with owlets in tree hollow'
+          }
+        ],
+        'hummingbird': [
+          {
+            image: 'https://images.pexels.com/photos/1300355/pexels-photo-1300355.jpeg',
+            title: 'Ruby-throated Hummingbird',
+            description: 'Tiny jewel-like bird in hovering flight'
+          },
+          {
+            image: 'https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg',
+            title: 'Hummingbird Feeding',
+            description: 'Hummingbird sipping nectar from flower'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg',
+            title: 'Hummingbird Nest',
+            description: 'Tiny nest with hummingbird eggs'
+          },
+          {
+            image: 'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg',
+            title: 'Hummingbird Wings',
+            description: 'Rapid wing beats captured in motion'
+          }
+        ]
+      };
+
+      // Function to populate bird gallery
+      function populateBirdGallery(species) {
+        const gallery = document.getElementById('birdGallery');
+        const galleryGrid = document.getElementById('galleryGrid');
+
+        if (!gallery || !galleryGrid) return;
+
+        // Clear existing gallery items
+        galleryGrid.innerHTML = '';
+
+        // Get species data (normalize species name)
+        const normalizedSpecies = species.toLowerCase().trim();
+        const speciesData = birdGalleryData[normalizedSpecies] || birdGalleryData['cardinal']; // fallback
+
+        // Create gallery items
+        speciesData.forEach(item => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          galleryItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">${item.title}</div>
+              <div class="gallery-item-description">${item.description}</div>
+            </div>
+          `;
+          galleryGrid.appendChild(galleryItem);
+        });
+
+        // Show the gallery
+        gallery.classList.remove('hidden');
+      }
+
+      // Check if we have a prediction and populate gallery
+      {% if prediction %}
+      document.addEventListener('DOMContentLoaded', function() {
+        populateBirdGallery('{{ prediction }}');
+      });
+      {% endif %}
 
       // Enhanced form submission with loading overlay
       document.querySelector('form').addEventListener('submit', function() {

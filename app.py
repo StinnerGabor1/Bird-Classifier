@@ -6,6 +6,7 @@ import pandas as pd
 from image_preprocessing import preprocess_image
 import json
 from load_custom_model import load_custom_model
+from ImageSearch import get_bird_images
 
 tf.get_logger().setLevel('ERROR')
 
@@ -40,7 +41,14 @@ def classify():
     prob=[x for x in np.asarray(tf.reduce_max(model(img)["dense"], axis = 1))][0]
     prob= np.round(prob,2)
 
-    return render_template("index.html",prediction=prediction ,prob=prob, file=st_image_path)
+    image_urls = get_bird_images(prediction)
+
+    if image_urls==[]:
+        image_urls = ["https://via.placeholder.com/600x400?text=No+Image+Found"]
+
+    print(image_urls)
+
+    return render_template("index.html",prediction=prediction ,prob=prob, file=st_image_path, image_urls=image_urls)
 
 if __name__=="__main__":
     app.run(debug=True)
