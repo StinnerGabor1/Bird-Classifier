@@ -1,6 +1,5 @@
 import requests
 
-
 def get_bird_images(bird_name, per_page=4):
     taxa_url = "https://api.inaturalist.org/v1/taxa"
     taxa_params = {
@@ -43,16 +42,24 @@ def get_bird_images(bird_name, per_page=4):
             url = photo.get('url')
             if url:
                 # Replace size keyword with 'original' for high-res image
-                high_res_url = url.replace('square', 'original').replace('medium', 'original')
+                high_res_url = url.replace('square', 'original').replace('medium', 'original').split('?')[0]
                 images.append(high_res_url)
 
     if not images:
         print("No images found.")
     return images
 
-
-# Example usage:
-"""bird = "bald eagle"
-urls = get_bird_images(bird)
-for u in urls:
-    print(u)"""
+def get_verified_wikipedia_url(title):
+    formatted_name = title.strip().title().replace(" ", "_")
+    endpoint = "https://en.wikipedia.org/w/api.php"
+    params = {
+        "action": "query",
+        "titles": formatted_name,
+        "format": "json"
+    }
+    response = requests.get(endpoint, params=params)
+    data = response.json()
+    pages = data.get("query", {}).get("pages", {})
+    if "-1" in pages:
+        return None  # Page doesn't exist
+    return f"https://en.wikipedia.org/wiki/{formatted_name}"

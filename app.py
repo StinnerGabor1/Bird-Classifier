@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request
 import numpy as np
 import tensorflow as tf
-import cv2
+from cv2 import imread
 import pandas as pd
-from image_preprocessing import preprocess_image
 import json
+
+from image_preprocessing import preprocess_image
 from load_custom_model import load_custom_model
-from ImageSearch import get_bird_images
+from ImageSearch import get_bird_images, get_verified_wikipedia_url
 
 tf.get_logger().setLevel('ERROR')
 
@@ -19,7 +20,6 @@ with open('bird_classes.json', 'r') as f:
 
 class_data= pd.DataFrame(class_data)
 labels=list(class_data["common_name"])
-encoded_labels= list(class_data["id"])
 @app.route("/")
 
 def home():
@@ -32,23 +32,27 @@ def classify():
     st_image_path= "images/" + imagefile.filename
     imagefile.save(image_path)
 
-    img = cv2.imread(image_path)
+    img = imread(image_path)
     img= preprocess_image(img)
 
-    prediction= model(img)
     y_pred= tf.math.argmax(model(img)["dense"], axis=1).numpy()
     prediction= labels[y_pred[0]+1]
-    prob=[x for x in np.asarray(tf.reduce_max(model(img)["dense"], axis = 1))][0]
+    prob=[x for x in np.asarray(tf.reduce_max(model(img)["dense"], axis = 1))][0]*10
     prob= np.round(prob,2)
 
     image_urls = get_bird_images(prediction)
+    wiki_url= get_verified_wikipedia_url(prediction)
+
+    if wiki_url==None: wiki_url=False
 
     if image_urls==[]:
         image_urls = ["https://via.placeholder.com/600x400?text=No+Image+Found"]
 
-    print(image_urls)
+    return render_template("index.html",prediction=prediction ,prob=prob, file=st_image_path, image_urls=image_urls, wiki_url=wiki_url)
 
-    return render_template("index.html",prediction=prediction ,prob=prob, file=st_image_path, image_urls=image_urls)
+@app.route("/bird_list")
+def list_birds():
+    print(labels)
 
 if __name__=="__main__":
     app.run(debug=True)

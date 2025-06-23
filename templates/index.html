@@ -1238,6 +1238,12 @@
                  <img src="{{ (url) }}" alt="{{ bird_name }}" width="45%" loading="lazy" style="margin:10px;">
               {% endfor %}
             </div>
+              {% if wiki_url %}
+                <p>
+                  Learn more on
+                    <a href="{{ wiki_url }}" target="_blank">Wikipedia</a>
+                </p>
+              {% endif %}
           </div>
           {% endif %}
 
