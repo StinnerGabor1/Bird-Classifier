@@ -45,14 +45,15 @@ labels=list(class_data["common_name"])[:100]
 bird_images=[]
 
 for index,label in enumerate(labels):
-    print("Processing:" ,label,"bird. Number:",index+1)
+    print("Processing:" ,label,"Number:",index+1)
     scientific= scientific_names[index]
     image= get_bird_images(label, per_page=1)
     category = assign_category(label)
     habitat = assign_habitat(category)
 
+    # Get description for birds using the wikipedia library
     try:
-        summary = wikipedia.summary(labels, sentences=1)
+        summary = wikipedia.summary(label, sentences=1)
     except:
         summary = "No description available."
 
