@@ -50,9 +50,9 @@ def classify():
 
     return render_template("index.html",prediction=prediction ,prob=prob, file=st_image_path, image_urls=image_urls, wiki_url=wiki_url)
 
-@app.route("/bird_list")
+@app.route("/species")
 def list_birds():
-    print(labels)
+    return render_template("species.html")
 
 if __name__=="__main__":
     app.run(debug=True)

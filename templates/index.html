@@ -83,6 +83,86 @@
         100% { transform: translateY(-100vh) translateX(50px); }
       }
 
+      /* Navigation Bar */
+      .nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(139, 195, 74, 0.2);
+        padding: 1rem 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .nav-content {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      .nav-logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.8rem;
+        font-size: 1.2rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .nav-link {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+
+      .nav-link:hover {
+        color: #ffffff;
+        background: rgba(139, 195, 74, 0.2);
+        border-color: rgba(139, 195, 74, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .nav-link.primary {
+        background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        color: #ffffff;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(139, 195, 74, 0.3);
+      }
+
+      .nav-link.primary:hover {
+        background: linear-gradient(135deg, #9ccc65 0%, #7cb342 100%);
+        box-shadow: 0 6px 20px rgba(139, 195, 74, 0.4);
+        transform: translateY(-3px);
+      }
+
       /* Expanded Layout Grid for Ads */
       .page-layout {
         display: grid;
@@ -92,6 +172,7 @@
         margin: 0 auto;
         padding: 2rem;
         min-height: 100vh;
+        padding-top: 6rem; /* Account for fixed nav */
       }
 
       .left-sidebar {
@@ -900,6 +981,7 @@
           grid-template-columns: 280px 1fr 280px;
           gap: 1.5rem;
           padding: 1.5rem;
+          padding-top: 6rem;
         }
 
         .ad-space {
@@ -917,6 +999,7 @@
           grid-template-columns: 1fr;
           gap: 1rem;
           max-width: 900px;
+          padding-top: 6rem;
         }
 
         .left-sidebar, .right-sidebar {
@@ -930,9 +1013,46 @@
         .main-content {
           max-width: 100%;
         }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .nav-link {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.9rem;
+        }
       }
 
       @media (max-width: 768px) {
+        .nav-content {
+          padding: 0 1rem;
+        }
+
+        .nav-logo {
+          font-size: 1rem;
+        }
+
+        .nav-logo-icon {
+          width: 35px;
+          height: 35px;
+          font-size: 1rem;
+        }
+
+        .nav-links {
+          gap: 0.5rem;
+        }
+
+        .nav-link {
+          padding: 0.3rem 0.6rem;
+          font-size: 0.8rem;
+        }
+
+        .page-layout {
+          padding: 1rem;
+          padding-top: 5rem;
+        }
+
         .main-container {
           margin: 0;
           padding: 2.5rem;
@@ -1078,6 +1198,21 @@
   </head>
   <body>
     <div class="nature-bg"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <div class="nav-content">
+        <a href="#" class="nav-logo">
+          <div class="nav-logo-icon">🦅</div>
+          Bird Classifier
+        </a>
+        <div class="nav-links">
+          <a href="species" class="nav-link primary">
+            📚 View All Species
+          </a>
+        </div>
+      </div>
+    </nav>
 
     <div class="page-layout">
       <!-- Left Sidebar Ads (Desktop) -->

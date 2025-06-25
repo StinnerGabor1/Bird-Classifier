@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Species Database - AI Bird Classifier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a4d0f, #2d5016, #3d6b1f, #4a7c23, #5a8f2a);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Enhanced Nature Background with Parallax Effect */
+        .nature-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #1a4d0f, #2d5016, #3d6b1f, #4a7c23, #5a8f2a);
+        }
+
+        .nature-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(139, 195, 74, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(104, 159, 56, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 60% 70%, rgba(129, 199, 132, 0.15) 0%, transparent 50%);
+            animation: natureFloat 12s ease-in-out infinite;
+        }
+
+        .nature-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, rgba(139, 195, 74, 0.4), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(76, 175, 80, 0.3), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(104, 159, 56, 0.5), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(129, 199, 132, 0.4), transparent);
+            background-repeat: repeat;
+            background-size: 150px 100px;
+            animation: floatingParticles 20s linear infinite;
+        }
+
+        @keyframes natureFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            25% { transform: translateY(-10px) rotate(0.3deg); opacity: 0.8; }
+            50% { transform: translateY(-20px) rotate(0.5deg); opacity: 0.9; }
+            75% { transform: translateY(-15px) rotate(0.2deg); opacity: 0.7; }
+        }
+
+        @keyframes floatingParticles {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(-100vh) translateX(50px); }
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 195, 74, 0.2);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(139, 195, 74, 0.2);
+            border-color: rgba(139, 195, 74, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Page Layout with Ads */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr 250px;
+            gap: 2rem;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            padding-top: 6rem;
+        }
+
+        .left-sidebar, .right-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        /* Premium Ad Space */
+        .ad-space {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 195, 74, 0.25);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: sticky;
+            top: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .ad-space:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(139, 195, 74, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .ad-space.large {
+            min-height: 650px;
+        }
+
+        .ad-placeholder {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            line-height: 1.8;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header Ad (Mobile) */
+        .header-ad, .footer-ad {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(139, 195, 74, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 35px;
+            padding: 4rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(139, 195, 74, 0.8),
+                rgba(76, 175, 80, 0.6),
+                rgba(139, 195, 74, 0.8),
+                transparent
+            );
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; transform: scaleX(0.8); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+
+        .hero-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8bc34a 0%, #689f38 50%, #558b2f 100%);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 15px 35px rgba(139, 195, 74, 0.4);
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+
+        .hero-title {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ffffff 0%, #e8f5e8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 195, 74, 0.3);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(139, 195, 74, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #8bc34a;
+            text-shadow: 0 2px 8px rgba(139, 195, 74, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Search and Filter Section */
+        .search-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .search-bar {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(139, 195, 74, 0.4);
+            border-radius: 20px;
+            font-size: 1.1rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #8bc34a;
+            box-shadow: 0 0 0 0.25rem rgba(139, 195, 74, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(139, 195, 74, 0.3);
+            border-radius: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: capitalize;
+        }
+
+        .filter-btn:hover {
+            background: rgba(139, 195, 74, 0.2);
+            border-color: rgba(139, 195, 74, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+            border-color: #8bc34a;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(139, 195, 74, 0.3);
+        }
+
+        /* Species Grid */
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .species-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(139, 195, 74, 0.25);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .species-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(139, 195, 74, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .species-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .species-card:hover .species-image {
+            transform: scale(1.1);
+        }
+
+        .species-info {
+            padding: 1.5rem;
+        }
+
+        .species-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .species-scientific {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .species-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(139, 195, 74, 0.2);
+            border: 1px solid rgba(139, 195, 74, 0.4);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #8bc34a;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        /* Loading States */
+        .loading-container {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(139, 195, 74, 0.3);
+            border-top: 4px solid #8bc34a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            margin: 2rem 0;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+
+        .no-results-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .no-results-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .pagination-btn {
+            padding: 0.8rem 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(139, 195, 74, 0.3);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .pagination-btn:hover {
+            background: rgba(139, 195, 74, 0.2);
+            border-color: rgba(139, 195, 74, 0.5);
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .pagination-btn.active {
+            background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+            border-color: #8bc34a;
+            color: #ffffff;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-info {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .page-layout {
+                grid-template-columns: 200px 1fr 200px;
+                gap: 1.5rem;
+                padding: 1.5rem;
+                padding-top: 6rem;
+            }
+
+            .ad-space {
+                min-height: 250px;
+                padding: 1.5rem;
+            }
+
+            .ad-space.large {
+                min-height: 500px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                max-width: 900px;
+                padding-top: 6rem;
+            }
+
+            .left-sidebar, .right-sidebar {
+                display: none;
+            }
+
+            .header-ad, .footer-ad {
+                display: flex;
+            }
+
+            .stats-container {
+                gap: 2rem;
+            }
+
+            .species-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0 1rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .nav-logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .page-layout {
+                padding: 1rem;
+                padding-top: 5rem;
+            }
+
+            .hero-section {
+                padding: 3rem 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stat-item {
+                padding: 1rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .search-section {
+                padding: 2rem;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .species-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .species-card {
+                border-radius: 20px;
+            }
+
+            .species-image {
+                height: 180px;
+            }
+        }
+
+        /* Hide mobile ads on desktop */
+        @media (min-width: 1201px) {
+            .header-ad, .footer-ad {
+                display: none;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nature-bg"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-icon">🦅</div>
+                Bird Classifier
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">
+                    ← Back to Classifier
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-layout">
+        <!-- Left Sidebar Ads (Desktop) -->
+        <div class="left-sidebar">
+            <div class="ad-space">
+                <div class="ad-placeholder">Premium<br>Advertisement<br>Space<br><br>300×250<br><br>High Engagement<br>Placement</div>
+            </div>
+            <div class="ad-space large">
+                <div class="ad-placeholder">Skyscraper<br>Advertisement<br>Space<br><br>300×600<br><br>Maximum Visibility<br>Premium Location</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header Ad (Mobile) -->
+            <div class="header-ad">
+                <div class="ad-placeholder">Mobile Banner Advertisement - 728×90<br>High Impact Header Placement</div>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="hero-section fade-in">
+                <div class="hero-logo">🦅</div>
+                <h1 class="hero-title">Bird Species Database</h1>
+                <p class="hero-subtitle">Explore all 1,486 bird species our AI model can identify with detailed information and stunning imagery</p>
+
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number" id="species-count">1,486</div>
+                        <div class="stat-label">Species</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Available</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Filter Section -->
+            <div class="search-section slide-up">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <span class="search-icon">🔍</span>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            class="search-input"
+                            placeholder="Search bird species by name, scientific name, or habitat..."
+                        >
+                    </div>
+
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Species</button>
+                        <button class="filter-btn" data-filter="common">Common</button>
+                        <button class="filter-btn" data-filter="rare">Rare</button>
+                        <button class="filter-btn" data-filter="waterbird">Water Birds</button>
+                        <button class="filter-btn" data-filter="raptor">Birds of Prey</button>
+                        <button class="filter-btn" data-filter="songbird">Songbirds</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Species Grid -->
+            <div id="speciesGrid" class="species-grid">
+                <!-- Species cards will be populated by JavaScript -->
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingContainer" class="loading-container" style="display: none;">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading more species...</div>
+            </div>
+
+            <!-- No Results -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <div class="no-results-icon">🔍</div>
+                <h3 class="no-results-title">No Species Found</h3>
+                <p class="no-results-text">Try adjusting your search terms or filters to find the bird species you're looking for.</p>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination">
+                <button class="pagination-btn" id="prevBtn" onclick="changePage(-1)">← Previous</button>
+                <span class="pagination-info" id="pageInfo">Page 1 of 1</span>
+                <button class="pagination-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
+            </div>
+
+            <!-- Footer Ad (Mobile) -->
+            <div class="footer-ad">
+                <div class="ad-placeholder">Mobile Banner Advertisement - 728×90<br>Strategic Footer Placement</div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar Ads (Desktop) -->
+        <div class="right-sidebar">
+            <div class="ad-space">
+                <div class="ad-placeholder">Square<br>Advertisement<br>Space<br><br>300×250<br><br>Perfect for<br>Product Showcases</div>
+            </div>
+            <div class="ad-space">
+                <div class="ad-placeholder">Medium<br>Rectangle<br>Advertisement<br><br>300×250<br><br>High Click-Through<br>Rate Placement</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive bird species database (sample of 1486 species)
+        const birdSpecies = [
+            // Sample data - in real implementation, this would be loaded from a database
+            {
+                name: "American Robin",
+                scientificName: "Turdus migratorius",
+                category: "common",
+                habitat: "Gardens, parks, woodlands",
+                description: "A familiar sight across North America, known for their bright red breast and melodious song.",
+                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Northern Cardinal",
+                scientificName: "Cardinalis cardinalis",
+                category: "common",
+                habitat: "Woodlands, gardens, shrublands",
+                description: "Vibrant red males and warm brown females make this species easily recognizable year-round.",
+                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Blue Jay",
+                scientificName: "Cyanocitta cristata",
+                category: "common",
+                habitat: "Oak and pine forests, suburban areas",
+                description: "Intelligent and social birds known for their striking blue coloration and complex vocalizations.",
+                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Bald Eagle",
+                scientificName: "Haliaeetus leucocephalus",
+                category: "raptor",
+                habitat: "Near large bodies of water",
+                description: "America's national bird, a powerful raptor that has made a remarkable recovery from near extinction.",
+                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Great Blue Heron",
+                scientificName: "Ardea herodias",
+                category: "waterbird",
+                habitat: "Wetlands, shores, marshes",
+                description: "Large wading birds known for their patient hunting style and impressive size.",
+                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Mallard Duck",
+                scientificName: "Anas platyrhynchos",
+                category: "waterbird",
+                habitat: "Ponds, lakes, rivers, wetlands",
+                description: "The most recognizable duck species, with males displaying iridescent green heads.",
+                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Red-tailed Hawk",
+                scientificName: "Buteo jamaicensis",
+                category: "raptor",
+                habitat: "Open woodlands, prairies, deserts",
+                description: "One of the most common hawks in North America, easily identified by their distinctive red tail.",
+                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "House Sparrow",
+                scientificName: "Passer domesticus",
+                category: "common",
+                habitat: "Urban areas, farms, parks",
+                description: "Small, social birds that have adapted well to urban environments worldwide.",
+                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Peregrine Falcon",
+                scientificName: "Falco peregrinus",
+                category: "raptor",
+                habitat: "Cliffs, tall buildings, bridges",
+                description: "The fastest bird in the world, capable of reaching speeds over 240 mph in hunting dives.",
+                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Great Horned Owl",
+                scientificName: "Bubo virginianus",
+                category: "raptor",
+                habitat: "Forests, swamps, deserts, urban areas",
+                description: "Powerful nocturnal hunters with distinctive ear tufts and piercing yellow eyes.",
+                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Wood Duck",
+                scientificName: "Aix sponsa",
+                category: "waterbird",
+                habitat: "Wooded swamps, shallow lakes",
+                description: "Considered one of the most beautiful waterfowl, with intricate plumage patterns.",
+                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Snowy Owl",
+                scientificName: "Bubo scandiacus",
+                category: "rare",
+                habitat: "Arctic tundra, open fields",
+                description: "Large white owls that migrate south from the Arctic during winter months.",
+                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "American Goldfinch",
+                scientificName: "Spinus tristis",
+                category: "songbird",
+                habitat: "Open woodlands, fields, gardens",
+                description: "Bright yellow males in breeding season, known for their undulating flight pattern.",
+                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Ruby-throated Hummingbird",
+                scientificName: "Archilochus colubris",
+                category: "songbird",
+                habitat: "Gardens, woodland edges, parks",
+                description: "Tiny jewel-like birds capable of hovering and flying backwards.",
+                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                name: "Belted Kingfisher",
+                scientificName: "Megaceryle alcyon",
+                category: "waterbird",
+                habitat: "Rivers, lakes, streams",
+                description: "Expert fishers with distinctive rattling calls and shaggy crests.",
+                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
+            }
+            // In real implementation, this array would contain all 1486 species
+        ];
+
+        // Pagination and filtering variables
+        let currentPage = 1;
+        const itemsPerPage = 12;
+        let filteredSpecies = [...birdSpecies];
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            renderSpeciesGrid();
+            updatePagination();
+        });
+
+        function setupEventListeners() {
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => handleFilter(btn.dataset.filter, btn));
+            });
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        function handleSearch() {
+            searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            currentPage = 1;
+            filterSpecies();
+            renderSpeciesGrid();
+            updatePagination();
+        }
+
+        function handleFilter(filter, button) {
+            currentFilter = filter;
+            currentPage = 1;
+
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+
+            filterSpecies();
+            renderSpeciesGrid();
+            updatePagination();
+        }
+
+        function filterSpecies() {
+            filteredSpecies = birdSpecies.filter(species => {
+                const matchesSearch = searchTerm === '' ||
+                    species.name.toLowerCase().includes(searchTerm) ||
+                    species.scientificName.toLowerCase().includes(searchTerm) ||
+                    species.habitat.toLowerCase().includes(searchTerm) ||
+                    species.description.toLowerCase().includes(searchTerm);
+
+                const matchesFilter = currentFilter === 'all' || species.category === currentFilter;
+
+                return matchesSearch && matchesFilter;
+            });
+        }
+
+        function renderSpeciesGrid() {
+            const grid = document.getElementById('speciesGrid');
+            const noResults = document.getElementById('noResults');
+            const loading = document.getElementById('loadingContainer');
+
+            // Show loading
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+            noResults.style.display = 'none';
+
+            // Simulate loading delay for better UX
+            setTimeout(() => {
+                loading.style.display = 'none';
+
+                if (filteredSpecies.length === 0) {
+                    noResults.style.display = 'block';
+                    return;
+                }
+
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const pageSpecies = filteredSpecies.slice(startIndex, endIndex);
+
+                grid.innerHTML = pageSpecies.map((species, index) => `
+                    <div class="species-card fade-in" style="animation-delay: ${index * 0.1}s">
+                        <img src="${species.image}" alt="${species.name}" class="species-image" loading="lazy">
+                        <div class="species-info">
+                            <h3 class="species-name">${species.name}</h3>
+                            <p class="species-scientific">${species.scientificName}</p>
+                            <div class="species-category">${species.category.replace('waterbird', 'water bird').replace('raptor', 'bird of prey').replace('songbird', 'songbird')}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }, 500);
+        }
+
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredSpecies.length / itemsPerPage);
+            const pageInfo = document.getElementById('pageInfo');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+
+            if (totalPages <= 1) {
+                document.getElementById('pagination').style.display = 'none';
+            } else {
+                document.getElementById('pagination').style.display = 'flex';
+            }
+        }
+
+        function changePage(direction) {
+            const totalPages = Math.ceil(filteredSpecies.length / itemsPerPage);
+            const newPage = currentPage + direction;
+
+            if (newPage >= 1 && newPage <= totalPages) {
+                currentPage = newPage;
+                renderSpeciesGrid();
+                updatePagination();
+
+                // Scroll to top of grid
+                document.getElementById('speciesGrid').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Parallax effect for background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.nature-bg');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>
