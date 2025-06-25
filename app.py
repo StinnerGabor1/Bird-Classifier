@@ -4,6 +4,7 @@ import tensorflow as tf
 from cv2 import imread
 import pandas as pd
 import json
+import os
 
 from image_preprocessing import preprocess_image
 from load_custom_model import load_custom_model
@@ -52,6 +53,10 @@ def classify():
 
 @app.route("/species")
 def list_birds():
+    """json_path = os.path.join(app.static_folder, "bird_image_database.json")
+    with open(json_path, "r", encoding="utf-8") as f:
+        birds = json.load(f)"""
+
     return render_template("species.html")
 
 if __name__=="__main__":

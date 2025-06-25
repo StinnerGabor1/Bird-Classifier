@@ -1,0 +1,802 @@
+[
+  {
+    "name": "Shikra",
+    "scientificName": "Accipiter badius",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526527341/original.jpg"
+  },
+  {
+    "name": "Cooper's Hawk",
+    "scientificName": "Accipiter cooperii",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526565334/original.jpg"
+  },
+  {
+    "name": "Northern Goshawk",
+    "scientificName": "Accipiter gentilis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526536769/original.jpg"
+  },
+  {
+    "name": "Eurasian Sparrowhawk",
+    "scientificName": "Accipiter nisus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://via.placeholder.com/600x400?text=No+Image+Found"
+  },
+  {
+    "name": "Sharp-shinned Hawk",
+    "scientificName": "Accipiter striatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526191607/original.jpg"
+  },
+  {
+    "name": "Crested Goshawk",
+    "scientificName": "Accipiter trivirgatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526469552/original.jpg"
+  },
+  {
+    "name": "Cinereous Vulture",
+    "scientificName": "Aegypius monachus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526539525/original.jpg"
+  },
+  {
+    "name": "Wedge-tailed Eagle",
+    "scientificName": "Aquila audax",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526543069/original.jpg"
+  },
+  {
+    "name": "Golden Eagle",
+    "scientificName": "Aquila chrysaetos",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526460472/original.jpg"
+  },
+  {
+    "name": "Imperial Eagle",
+    "scientificName": "Aquila heliaca",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526497388/original.jpg"
+  },
+  {
+    "name": "Steppe Eagle",
+    "scientificName": "Aquila nipalensis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526115187/original.jpg"
+  },
+  {
+    "name": "Tawny Eagle",
+    "scientificName": "Aquila rapax",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526501962/original.jpg"
+  },
+  {
+    "name": "Black-collared Hawk",
+    "scientificName": "Busarellus nigricollis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526393311/original.jpg"
+  },
+  {
+    "name": "Zone-tailed Hawk",
+    "scientificName": "Buteo albonotatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526367157/original.jpg"
+  },
+  {
+    "name": "Short-tailed Hawk",
+    "scientificName": "Buteo brachyurus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526426724/original.jpg"
+  },
+  {
+    "name": "Common Buzzard",
+    "scientificName": "Buteo buteo",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526554798/original.jpg"
+  },
+  {
+    "name": "Red-tailed Hawk",
+    "scientificName": "Buteo jamaicensis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526563601/original.jpg"
+  },
+  {
+    "name": "Rough-legged Hawk",
+    "scientificName": "Buteo lagopus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/525443888/original.jpg"
+  },
+  {
+    "name": "Red-shouldered Hawk",
+    "scientificName": "Buteo lineatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526556597/original.jpg"
+  },
+  {
+    "name": "Gray Hawk",
+    "scientificName": "Buteo plagiatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526428355/original.jpg"
+  },
+  {
+    "name": "Broad-winged Hawk",
+    "scientificName": "Buteo platypterus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526561535/original.jpg"
+  },
+  {
+    "name": "Ferruginous Hawk",
+    "scientificName": "Buteo regalis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526212672/original.jpg"
+  },
+  {
+    "name": "Long-legged Buzzard",
+    "scientificName": "Buteo rufinus",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526549206/original.jpg"
+  },
+  {
+    "name": "Jackal Buzzard",
+    "scientificName": "Buteo rufofuscus",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526485143/original.jpg"
+  },
+  {
+    "name": "Swainson's Hawk",
+    "scientificName": "Buteo swainsoni",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526529394/original.jpg"
+  },
+  {
+    "name": "Common Black-Hawk",
+    "scientificName": "Buteogallus anthracinus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526279075/original.jpg"
+  },
+  {
+    "name": "Savanna Hawk",
+    "scientificName": "Buteogallus meridionalis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526394709/original.jpg"
+  },
+  {
+    "name": "Great Black-Hawk",
+    "scientificName": "Buteogallus urubitinga",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526400784/original.jpg"
+  },
+  {
+    "name": "Hook-billed Kite",
+    "scientificName": "Chondrohierax uncinatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/525794651/original.jpg"
+  },
+  {
+    "name": "Brown Snake Eagle",
+    "scientificName": "Circaetus cinereus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526482300/original.jpg"
+  },
+  {
+    "name": "Short-toed Eagle",
+    "scientificName": "Circaetus gallicus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526539311/original.jpg"
+  },
+  {
+    "name": "Western Marsh-Harrier",
+    "scientificName": "Circus aeruginosus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526560986/original.jpg"
+  },
+  {
+    "name": "Swamp Harrier",
+    "scientificName": "Circus approximans",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526512062/original.jpg"
+  },
+  {
+    "name": "Hen Harrier",
+    "scientificName": "Circus cyaneus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526525626/original.jpg"
+  },
+  {
+    "name": "Northern Harrier",
+    "scientificName": "Circus hudsonius",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526525893/original.jpg"
+  },
+  {
+    "name": "Pale Harrier",
+    "scientificName": "Circus macrourus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526475177/original.jpg"
+  },
+  {
+    "name": "Montagu's Harrier",
+    "scientificName": "Circus pygargus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526539380/original.jpg"
+  },
+  {
+    "name": "Greater Spotted Eagle",
+    "scientificName": "Clanga clanga",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526534289/original.jpg"
+  },
+  {
+    "name": "American Swallow-tailed Kite",
+    "scientificName": "Elanoides forficatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526426486/original.jpg"
+  },
+  {
+    "name": "Black-shouldered Kite",
+    "scientificName": "Elanus axillaris",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526499727/original.jpg"
+  },
+  {
+    "name": "Black-winged Kite",
+    "scientificName": "Elanus caeruleus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526499727/original.jpg"
+  },
+  {
+    "name": "White-tailed Kite",
+    "scientificName": "Elanus leucurus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526004695/original.jpg"
+  },
+  {
+    "name": "White-tailed Hawk",
+    "scientificName": "Geranoaetus albicaudatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526431333/original.jpg"
+  },
+  {
+    "name": "Black-chested Buzzard-Eagle",
+    "scientificName": "Geranoaetus melanoleucus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/525932593/original.jpg"
+  },
+  {
+    "name": "Variable Hawk",
+    "scientificName": "Geranoaetus polyosoma",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526454351/original.jpg"
+  },
+  {
+    "name": "Crane Hawk",
+    "scientificName": "Geranospiza caerulescens",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526231433/original.jpg"
+  },
+  {
+    "name": "Bearded Vulture",
+    "scientificName": "Gypaetus barbatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526520499/original.jpg"
+  },
+  {
+    "name": "White-backed Vulture",
+    "scientificName": "Gyps africanus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526565844/original.jpg"
+  },
+  {
+    "name": "Griffon Vulture",
+    "scientificName": "Gyps fulvus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526551126/original.jpg"
+  },
+  {
+    "name": "White-tailed Eagle",
+    "scientificName": "Haliaeetus albicilla",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526555835/original.jpg"
+  },
+  {
+    "name": "Bald Eagle",
+    "scientificName": "Haliaeetus leucocephalus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526555794/original.jpg"
+  },
+  {
+    "name": "White-bellied Sea-Eagle",
+    "scientificName": "Haliaeetus leucogaster",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526514023/original.jpg"
+  },
+  {
+    "name": "African Fish Eagle",
+    "scientificName": "Haliaeetus vocifer",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526398090/original.jpg"
+  },
+  {
+    "name": "Brahminy Kite",
+    "scientificName": "Haliastur indus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526534223/original.jpg"
+  },
+  {
+    "name": "Whistling Kite",
+    "scientificName": "Haliastur sphenurus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526511978/original.jpg"
+  },
+  {
+    "name": "Booted Eagle",
+    "scientificName": "Hieraaetus pennatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526521354/original.jpg"
+  },
+  {
+    "name": "Mississippi Kite",
+    "scientificName": "Ictinia mississippiensis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526425477/original.jpg"
+  },
+  {
+    "name": "Plumbeous Kite",
+    "scientificName": "Ictinia plumbea",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526119929/original.jpg"
+  },
+  {
+    "name": "Long-crested Eagle",
+    "scientificName": "Lophaetus occipitalis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526461022/original.jpg"
+  },
+  {
+    "name": "Pale Chanting Goshawk",
+    "scientificName": "Melierax canorus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526545821/original.jpg"
+  },
+  {
+    "name": "Black Kite",
+    "scientificName": "Milvus migrans",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526565574/original.jpg"
+  },
+  {
+    "name": "Red Kite",
+    "scientificName": "Milvus milvus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526557161/original.jpg"
+  },
+  {
+    "name": "Hooded Vulture",
+    "scientificName": "Necrosyrtes monachus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526550779/original.jpg"
+  },
+  {
+    "name": "Egyptian Vulture",
+    "scientificName": "Neophron percnopterus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526539529/original.jpg"
+  },
+  {
+    "name": "Crested Hawk-Eagle",
+    "scientificName": "Nisaetus cirrhatus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526531863/original.jpg"
+  },
+  {
+    "name": "Harris' Hawk",
+    "scientificName": "Parabuteo unicinctus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526564204/original.jpg"
+  },
+  {
+    "name": "European Honey-buzzard",
+    "scientificName": "Pernis apivorus",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526525568/original.jpg"
+  },
+  {
+    "name": "Oriental Honey-buzzard",
+    "scientificName": "Pernis ptilorhynchus",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526251756/original.jpg"
+  },
+  {
+    "name": "Martial Eagle",
+    "scientificName": "Polemaetus bellicosus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526144060/original.jpg"
+  },
+  {
+    "name": "African Harrier-Hawk",
+    "scientificName": "Polyboroides typus",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526501905/original.jpg"
+  },
+  {
+    "name": "Snail Kite",
+    "scientificName": "Rostrhamus sociabilis",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526424928/original.jpg"
+  },
+  {
+    "name": "Roadside Hawk",
+    "scientificName": "Rupornis magnirostris",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526484195/original.jpg"
+  },
+  {
+    "name": "Crested Serpent Eagle",
+    "scientificName": "Spilornis cheela",
+    "category": "raptor",
+    "habitat": "Open woodlands, cliffs, or urban high-rises",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526527922/original.jpg"
+  },
+  {
+    "name": "Bateleur",
+    "scientificName": "Terathopius ecaudatus",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526501968/original.jpg"
+  },
+  {
+    "name": "Osprey",
+    "scientificName": "Pandion haliaetus",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526545390/original.jpg"
+  },
+  {
+    "name": "Secretary Bird",
+    "scientificName": "Sagittarius serpentarius",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526498816/original.jpg"
+  },
+  {
+    "name": "Mandarin Duck",
+    "scientificName": "Aix galericulata",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526437894/original.jpg"
+  },
+  {
+    "name": "Wood Duck",
+    "scientificName": "Aix sponsa",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526550974/original.jpg"
+  },
+  {
+    "name": "Egyptian Goose",
+    "scientificName": "Alopochen aegyptiaca",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526550834/original.jpg"
+  },
+  {
+    "name": "Brazilian Teal",
+    "scientificName": "Amazonetta brasiliensis",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526434572/original.jpg"
+  },
+  {
+    "name": "Northern Pintail",
+    "scientificName": "Anas acuta",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526495925/original.jpg"
+  },
+  {
+    "name": "White-cheeked Pintail",
+    "scientificName": "Anas bahamensis",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526562891/original.jpg"
+  },
+  {
+    "name": "Chestnut Teal",
+    "scientificName": "Anas castanea",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526548125/original.jpg"
+  },
+  {
+    "name": "Common Teal",
+    "scientificName": "Anas crecca",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526541096/original.jpg"
+  },
+  {
+    "name": "Mexican Duck",
+    "scientificName": "Anas diazi",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526498107/original.jpg"
+  },
+  {
+    "name": "Red-billed Teal",
+    "scientificName": "Anas erythrorhyncha",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526088070/original.jpg"
+  },
+  {
+    "name": "Speckled Teal",
+    "scientificName": "Anas flavirostris",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526382949/original.jpg"
+  },
+  {
+    "name": "Mottled Duck",
+    "scientificName": "Anas fulvigula",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526521082/original.jpg"
+  },
+  {
+    "name": "Yellow-billed Pintail",
+    "scientificName": "Anas georgica",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526024890/original.jpg"
+  },
+  {
+    "name": "Grey Teal",
+    "scientificName": "Anas gracilis",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526561555/original.jpg"
+  },
+  {
+    "name": "Mallard",
+    "scientificName": "Anas platyrhynchos",
+    "category": "unknown",
+    "habitat": "Various habitats",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526563989/original.jpg"
+  },
+  {
+    "name": "Indian Spot-billed Duck",
+    "scientificName": "Anas poecilorhyncha",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526467834/original.jpg"
+  },
+  {
+    "name": "American Black Duck",
+    "scientificName": "Anas rubripes",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526533296/original.jpg"
+  },
+  {
+    "name": "Pacific Black Duck",
+    "scientificName": "Anas superciliosa",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526548043/original.jpg"
+  },
+  {
+    "name": "Yellow-billed Duck",
+    "scientificName": "Anas undulata",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://static.inaturalist.org/photos/526048887/original.jpg"
+  },
+  {
+    "name": "Eastern Spot-billed Duck",
+    "scientificName": "Anas zonorhyncha",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526550441/original.jpg"
+  },
+  {
+    "name": "Greater White-fronted Goose",
+    "scientificName": "Anser albifrons",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526402564/original.jpg"
+  },
+  {
+    "name": "Greylag Goose",
+    "scientificName": "Anser anser",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526563151/original.jpg"
+  },
+  {
+    "name": "Pink-footed Goose",
+    "scientificName": "Anser brachyrhynchus",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/525712635/original.jpg"
+  },
+  {
+    "name": "Snow Goose",
+    "scientificName": "Anser caerulescens",
+    "category": "waterbird",
+    "habitat": "Wetlands, lakes, rivers, and coastal shores",
+    "description": "The snow goose (Anser caerulescens) is a species of goose native to North America.",
+    "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/526512982/original.jpg"
+  }
+]

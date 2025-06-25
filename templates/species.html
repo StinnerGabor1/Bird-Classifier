@@ -817,10 +817,12 @@
                     <div class="filter-buttons">
                         <button class="filter-btn active" data-filter="all">All Species</button>
                         <button class="filter-btn" data-filter="common">Common</button>
-                        <button class="filter-btn" data-filter="rare">Rare</button>
                         <button class="filter-btn" data-filter="waterbird">Water Birds</button>
                         <button class="filter-btn" data-filter="raptor">Birds of Prey</button>
                         <button class="filter-btn" data-filter="songbird">Songbirds</button>
+                        <button class="filter-btn" data-filter="woodpecker">Woodpecker</button>
+                        <button class="filter-btn" data-filter="shorebird">Shorebird</button>
+                        <button class="filter-btn" data-filter="gamebird">Gamebird</button>
                     </div>
                 </div>
             </div>
@@ -868,285 +870,130 @@
     </div>
 
     <script>
-        // Comprehensive bird species database (sample of 1486 species)
-        const birdSpecies = [
-            // Sample data - in real implementation, this would be loaded from a database
-            {
-                name: "American Robin",
-                scientificName: "Turdus migratorius",
-                category: "common",
-                habitat: "Gardens, parks, woodlands",
-                description: "A familiar sight across North America, known for their bright red breast and melodious song.",
-                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Northern Cardinal",
-                scientificName: "Cardinalis cardinalis",
-                category: "common",
-                habitat: "Woodlands, gardens, shrublands",
-                description: "Vibrant red males and warm brown females make this species easily recognizable year-round.",
-                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Blue Jay",
-                scientificName: "Cyanocitta cristata",
-                category: "common",
-                habitat: "Oak and pine forests, suburban areas",
-                description: "Intelligent and social birds known for their striking blue coloration and complex vocalizations.",
-                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Bald Eagle",
-                scientificName: "Haliaeetus leucocephalus",
-                category: "raptor",
-                habitat: "Near large bodies of water",
-                description: "America's national bird, a powerful raptor that has made a remarkable recovery from near extinction.",
-                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Great Blue Heron",
-                scientificName: "Ardea herodias",
-                category: "waterbird",
-                habitat: "Wetlands, shores, marshes",
-                description: "Large wading birds known for their patient hunting style and impressive size.",
-                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Mallard Duck",
-                scientificName: "Anas platyrhynchos",
-                category: "waterbird",
-                habitat: "Ponds, lakes, rivers, wetlands",
-                description: "The most recognizable duck species, with males displaying iridescent green heads.",
-                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Red-tailed Hawk",
-                scientificName: "Buteo jamaicensis",
-                category: "raptor",
-                habitat: "Open woodlands, prairies, deserts",
-                description: "One of the most common hawks in North America, easily identified by their distinctive red tail.",
-                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "House Sparrow",
-                scientificName: "Passer domesticus",
-                category: "common",
-                habitat: "Urban areas, farms, parks",
-                description: "Small, social birds that have adapted well to urban environments worldwide.",
-                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Peregrine Falcon",
-                scientificName: "Falco peregrinus",
-                category: "raptor",
-                habitat: "Cliffs, tall buildings, bridges",
-                description: "The fastest bird in the world, capable of reaching speeds over 240 mph in hunting dives.",
-                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Great Horned Owl",
-                scientificName: "Bubo virginianus",
-                category: "raptor",
-                habitat: "Forests, swamps, deserts, urban areas",
-                description: "Powerful nocturnal hunters with distinctive ear tufts and piercing yellow eyes.",
-                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Wood Duck",
-                scientificName: "Aix sponsa",
-                category: "waterbird",
-                habitat: "Wooded swamps, shallow lakes",
-                description: "Considered one of the most beautiful waterfowl, with intricate plumage patterns.",
-                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Snowy Owl",
-                scientificName: "Bubo scandiacus",
-                category: "rare",
-                habitat: "Arctic tundra, open fields",
-                description: "Large white owls that migrate south from the Arctic during winter months.",
-                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "American Goldfinch",
-                scientificName: "Spinus tristis",
-                category: "songbird",
-                habitat: "Open woodlands, fields, gardens",
-                description: "Bright yellow males in breeding season, known for their undulating flight pattern.",
-                image: "https://images.pexels.com/photos/326900/pexels-photo-326900.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Ruby-throated Hummingbird",
-                scientificName: "Archilochus colubris",
-                category: "songbird",
-                habitat: "Gardens, woodland edges, parks",
-                description: "Tiny jewel-like birds capable of hovering and flying backwards.",
-                image: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                name: "Belted Kingfisher",
-                scientificName: "Megaceryle alcyon",
-                category: "waterbird",
-                habitat: "Rivers, lakes, streams",
-                description: "Expert fishers with distinctive rattling calls and shaggy crests.",
-                image: "https://images.pexels.com/photos/53581/bald-eagles-bald-eagle-bird-of-prey-adler-53581.jpeg?auto=compress&cs=tinysrgb&w=400"
-            }
-            // In real implementation, this array would contain all 1486 species
-        ];
+let birdSpecies = [];
+let filteredSpecies = [];
+let currentPage = 1;
+const itemsPerPage = 12;
+let currentFilter = 'all';
+let searchTerm = '';
 
-        // Pagination and filtering variables
-        let currentPage = 1;
-        const itemsPerPage = 12;
-        let filteredSpecies = [...birdSpecies];
-        let currentFilter = 'all';
-        let searchTerm = '';
+document.addEventListener('DOMContentLoaded', function () {
+  fetch('/static/data/bird_image_database.json')
+    .then(response => response.json())
+    .then(data => {
+      birdSpecies = data;
+      filteredSpecies = [...birdSpecies];
+      setupEventListeners();
+      renderSpeciesGrid();
+      updatePagination();
+    })
+    .catch(error => {
+      console.error('Error loading bird data:', error);
+      document.getElementById('speciesGrid').innerHTML = '<p>Failed to load birds.</p>';
+    });
+});
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            setupEventListeners();
-            renderSpeciesGrid();
-            updatePagination();
-        });
+function setupEventListeners() {
+  document.getElementById('searchInput').addEventListener('input', debounce(handleSearch, 300));
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => handleFilter(btn.dataset.filter, btn));
+  });
+}
 
-        function setupEventListeners() {
-            // Search functionality
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', debounce(handleSearch, 300));
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
+}
 
-            // Filter buttons
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', () => handleFilter(btn.dataset.filter, btn));
-            });
-        }
+function handleSearch() {
+  searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  currentPage = 1;
+  filterSpecies();
+  renderSpeciesGrid();
+  updatePagination();
+}
 
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
+function handleFilter(filter, button) {
+  currentFilter = filter;
+  currentPage = 1;
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  button.classList.add('active');
+  filterSpecies();
+  renderSpeciesGrid();
+  updatePagination();
+}
 
-        function handleSearch() {
-            searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            currentPage = 1;
-            filterSpecies();
-            renderSpeciesGrid();
-            updatePagination();
-        }
+function filterSpecies() {
+  filteredSpecies = birdSpecies.filter(species => {
+    const matchesSearch = searchTerm === '' ||
+      species.name.toLowerCase().includes(searchTerm) ||
+      species.scientificName.toLowerCase().includes(searchTerm) ||
+      species.habitat.toLowerCase().includes(searchTerm) ||
+      species.description.toLowerCase().includes(searchTerm);
 
-        function handleFilter(filter, button) {
-            currentFilter = filter;
-            currentPage = 1;
+    const matchesFilter = currentFilter === 'all' || species.category === currentFilter;
+    return matchesSearch && matchesFilter;
+  });
+}
 
-            // Update button states
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            button.classList.add('active');
+function renderSpeciesGrid() {
+  const grid = document.getElementById('speciesGrid');
+  const noResults = document.getElementById('noResults');
+  const loading = document.getElementById('loadingContainer');
 
-            filterSpecies();
-            renderSpeciesGrid();
-            updatePagination();
-        }
+  loading.style.display = 'block';
+  grid.innerHTML = '';
+  noResults.style.display = 'none';
 
-        function filterSpecies() {
-            filteredSpecies = birdSpecies.filter(species => {
-                const matchesSearch = searchTerm === '' ||
-                    species.name.toLowerCase().includes(searchTerm) ||
-                    species.scientificName.toLowerCase().includes(searchTerm) ||
-                    species.habitat.toLowerCase().includes(searchTerm) ||
-                    species.description.toLowerCase().includes(searchTerm);
+  setTimeout(() => {
+    loading.style.display = 'none';
 
-                const matchesFilter = currentFilter === 'all' || species.category === currentFilter;
+    if (filteredSpecies.length === 0) {
+      noResults.style.display = 'block';
+      return;
+    }
 
-                return matchesSearch && matchesFilter;
-            });
-        }
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const pageSpecies = filteredSpecies.slice(startIndex, endIndex);
 
-        function renderSpeciesGrid() {
-            const grid = document.getElementById('speciesGrid');
-            const noResults = document.getElementById('noResults');
-            const loading = document.getElementById('loadingContainer');
+    grid.innerHTML = pageSpecies.map((species, index) => `
+      <div class="species-card fade-in" style="animation-delay: ${index * 0.1}s">
+        <img src="${species.image}" alt="${species.name}" class="species-image" loading="lazy">
+        <div class="species-info">
+          <h3 class="species-name">${species.name}</h3>
+          <p class="species-scientific"><em>${species.scientificName}</em></p>
+          <p class="species-habitat"><strong>Habitat:</strong> ${species.habitat}</p>
+          <p class="species-description">${species.description}</p>
+          <div class="species-category">${species.category}</div>
+        </div>
+      </div>
+    `).join('');
+  }, 300);
+}
 
-            // Show loading
-            loading.style.display = 'block';
-            grid.innerHTML = '';
-            noResults.style.display = 'none';
+function updatePagination() {
+  const totalPages = Math.ceil(filteredSpecies.length / itemsPerPage);
+  document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+  document.getElementById('prevBtn').disabled = currentPage === 1;
+  document.getElementById('nextBtn').disabled = currentPage === totalPages || totalPages === 0;
+  document.getElementById('pagination').style.display = totalPages <= 1 ? 'none' : 'flex';
+}
 
-            // Simulate loading delay for better UX
-            setTimeout(() => {
-                loading.style.display = 'none';
+function changePage(direction) {
+  const totalPages = Math.ceil(filteredSpecies.length / itemsPerPage);
+  const newPage = currentPage + direction;
 
-                if (filteredSpecies.length === 0) {
-                    noResults.style.display = 'block';
-                    return;
-                }
-
-                const startIndex = (currentPage - 1) * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-                const pageSpecies = filteredSpecies.slice(startIndex, endIndex);
-
-                grid.innerHTML = pageSpecies.map((species, index) => `
-                    <div class="species-card fade-in" style="animation-delay: ${index * 0.1}s">
-                        <img src="${species.image}" alt="${species.name}" class="species-image" loading="lazy">
-                        <div class="species-info">
-                            <h3 class="species-name">${species.name}</h3>
-                            <p class="species-scientific">${species.scientificName}</p>
-                            <div class="species-category">${species.category.replace('waterbird', 'water bird').replace('raptor', 'bird of prey').replace('songbird', 'songbird')}</div>
-                        </div>
-                    </div>
-                `).join('');
-            }, 500);
-        }
-
-        function updatePagination() {
-            const totalPages = Math.ceil(filteredSpecies.length / itemsPerPage);
-            const pageInfo = document.getElementById('pageInfo');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-
-            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages || totalPages === 0;
-
-            if (totalPages <= 1) {
-                document.getElementById('pagination').style.display = 'none';
-            } else {
-                document.getElementById('pagination').style.display = 'flex';
-            }
-        }
-
-        function changePage(direction) {
-            const totalPages = Math.ceil(filteredSpecies.length / itemsPerPage);
-            const newPage = currentPage + direction;
-
-            if (newPage >= 1 && newPage <= totalPages) {
-                currentPage = newPage;
-                renderSpeciesGrid();
-                updatePagination();
-
-                // Scroll to top of grid
-                document.getElementById('speciesGrid').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        // Parallax effect for background
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.nature-bg');
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
-        });
-    </script>
+  if (newPage >= 1 && newPage <= totalPages) {
+    currentPage = newPage;
+    renderSpeciesGrid();
+    updatePagination();
+    document.getElementById('speciesGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+</script>
 </body>
 </html>
