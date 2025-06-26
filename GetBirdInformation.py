@@ -39,8 +39,8 @@ with open('bird_classes.json', 'r') as f:
     class_data = json.load(f)
 
 class_data= pd.DataFrame(class_data)
-scientific_names=list(class_data["name"])[:100]
-labels=list(class_data["common_name"])[:100]
+scientific_names=list(class_data["name"])
+labels=list(class_data["common_name"])
 
 bird_images=[]
 
@@ -49,10 +49,12 @@ for index,label in enumerate(labels):
     scientific= scientific_names[index]
     image= get_bird_images(label, per_page=1)
     category = assign_category(label)
-    habitat = assign_habitat(category)
+    #habitat = assign_habitat(category)
 
     # Get description for birds using the wikipedia library
     try:
+        page = wikipedia.page(label)
+        url = page.url
         summary = wikipedia.summary(label, sentences=1)
     except:
         summary = "No description available."
@@ -61,15 +63,15 @@ for index,label in enumerate(labels):
         bird_images.append({"name": label,
                             "scientificName": scientific,
                             "category": category,
-                            "habitat": habitat,
                             "description": summary,
+                            "url": url,
                             "image": "https://via.placeholder.com/600x400?text=No+Image+Found"})
     else:
         bird_images.append({"name": label,
                             "scientificName": scientific,
                             "category": category,
-                            "habitat": habitat,
                             "description": summary,
+                            "url":url,
                             "image": image[0]})
 
 with open("static/data/bird_image_database.json", "w", encoding="utf-8") as f:

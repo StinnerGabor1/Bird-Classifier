@@ -1,5 +1,4 @@
 import requests
-
 def get_bird_images(bird_name, per_page=4):
     taxa_url = "https://api.inaturalist.org/v1/taxa"
     taxa_params = {
@@ -7,7 +6,6 @@ def get_bird_images(bird_name, per_page=4):
         "rank": "species",
         "per_page": 1
     }
-
     taxa_response = requests.get(taxa_url, params=taxa_params)
     if taxa_response.status_code != 200:
         print(f"Failed to search taxa: {taxa_response.status_code}")
@@ -44,7 +42,6 @@ def get_bird_images(bird_name, per_page=4):
                 # Replace size keyword with 'original' for high-res image
                 high_res_url = url.replace('square', 'original').replace('medium', 'original').split('?')[0]
                 images.append(high_res_url)
-
     if not images:
         print("No images found.")
     return images

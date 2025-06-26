@@ -481,12 +481,23 @@
             display: inline-block;
             padding: 0.3rem 0.8rem;
             background: rgba(139, 195, 74, 0.2);
-            border: 1px solid rgba(139, 195, 74, 0.4);
+            border: 2px solid rgba(139, 195, 74, 0.4);
             border-radius: 12px;
+            margin-top: 3px;
             font-size: 0.8rem;
             color: #8bc34a;
             font-weight: 500;
             text-transform: capitalize;
+        }
+
+        .species-card-link {
+          text-decoration: none;
+          color: inherit;
+          display: block;
+        }
+        .species-card-link:hover .species-card {
+          transform: scale(1.02);
+          transition: transform 0.2s;
         }
 
         /* Loading States */
@@ -791,7 +802,7 @@
                         <div class="stat-label">Species</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">95%</div>
+                        <div class="stat-number">48%</div>
                         <div class="stat-label">Accuracy</div>
                     </div>
                     <div class="stat-item">
@@ -931,7 +942,6 @@ function filterSpecies() {
     const matchesSearch = searchTerm === '' ||
       species.name.toLowerCase().includes(searchTerm) ||
       species.scientificName.toLowerCase().includes(searchTerm) ||
-      species.habitat.toLowerCase().includes(searchTerm) ||
       species.description.toLowerCase().includes(searchTerm);
 
     const matchesFilter = currentFilter === 'all' || species.category === currentFilter;
@@ -940,39 +950,40 @@ function filterSpecies() {
 }
 
 function renderSpeciesGrid() {
-  const grid = document.getElementById('speciesGrid');
-  const noResults = document.getElementById('noResults');
-  const loading = document.getElementById('loadingContainer');
+    const grid = document.getElementById('speciesGrid');
+    const noResults = document.getElementById('noResults');
+    const loading = document.getElementById('loadingContainer');
 
-  loading.style.display = 'block';
-  grid.innerHTML = '';
-  noResults.style.display = 'none';
+    loading.style.display = 'block';
+    grid.innerHTML = '';
+    noResults.style.display = 'none';
 
-  setTimeout(() => {
-    loading.style.display = 'none';
+    setTimeout(() => {
+        loading.style.display = 'none';
 
-    if (filteredSpecies.length === 0) {
-      noResults.style.display = 'block';
-      return;
-    }
+        if (filteredSpecies.length === 0) {
+            noResults.style.display = 'block';
+            return;
+        }
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const pageSpecies = filteredSpecies.slice(startIndex, endIndex);
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const pageSpecies = filteredSpecies.slice(startIndex, endIndex);
 
-    grid.innerHTML = pageSpecies.map((species, index) => `
-      <div class="species-card fade-in" style="animation-delay: ${index * 0.1}s">
-        <img src="${species.image}" alt="${species.name}" class="species-image" loading="lazy">
-        <div class="species-info">
-          <h3 class="species-name">${species.name}</h3>
-          <p class="species-scientific"><em>${species.scientificName}</em></p>
-          <p class="species-habitat"><strong>Habitat:</strong> ${species.habitat}</p>
-          <p class="species-description">${species.description}</p>
-          <div class="species-category">${species.category}</div>
-        </div>
-      </div>
-    `).join('');
-  }, 300);
+        grid.innerHTML = pageSpecies.map((species, index) => `
+            <a href="${species.url}" target="_blank" rel="noopener noreferrer" class="species-card-link">
+                <div class="species-card fade-in" style="animation-delay: ${index * 0.1}s">
+                    <img src="${species.image}" alt="${species.name}" class="species-image" loading="lazy">
+                    <div class="species-info">
+                        <h3 class="species-name">${species.name}</h3>
+                        <p class="species-scientific"><em>${species.scientificName}</em></p>
+                        <p class="species-description">${species.description}</p>
+                        <div class="species-category">${species.category}</div>
+                    </div>
+                </div>
+            </a>
+        `).join('');
+    }, 300);
 }
 
 function updatePagination() {
